@@ -14,7 +14,10 @@ class LocaisListViewModel(
     private val repository: LocalRepository
 ) : ViewModel() {
 
+    // _uiState privado e mutável, acessível apenas dentro do ViewModel
     private val _uiState = MutableStateFlow(LocaisListUiState())
+
+    // uiState público e imutável, exposto para a UI
     val uiState: StateFlow<LocaisListUiState> = _uiState
 
     fun carregarLocaisPorCategoria(categoriaId: String) {
