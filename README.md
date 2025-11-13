@@ -38,7 +38,7 @@ Ao clicar em qualquer card da lista (ex: "Café Aroma"), o usuário é apresenta
 * **Linguagem:** Kotlin
 * **UI Toolkit:** Jetpack Compose
 * **Ferramenta de Design:** Figma (para o modelo de interface)
-* **Arquitetura:** *(Sugestão: Adicionar aqui se for usar MVVM, MVI ou outra.)*
+* **Arquitetura:** MVVM
 
 ## 🧑‍💻 Como Rodar
 
