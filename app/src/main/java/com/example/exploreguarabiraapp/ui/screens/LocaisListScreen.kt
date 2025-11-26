@@ -41,7 +41,7 @@ fun LocaisListScreen(
     val uiState by viewModel.uiState.collectAsState()
 
     LaunchedEffect(categoriaId) {
-        viewModel.carregarLocaisPorCategoria(categoriaId)
+        viewModel.carregarLocais(categoriaId)
     }
 
     Scaffold (
@@ -59,7 +59,7 @@ fun LocaisListScreen(
         ) {
             OutlinedTextField(
                 value = uiState.searchQuery,
-                onValueChange = viewModel::onSearchQueryChanged,
+                onValueChange = viewModel::onSearchTextChange,
                 leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
                 placeholder = { Text("Buscar estabelecimentos...") },
                 modifier = Modifier

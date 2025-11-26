@@ -18,10 +18,10 @@ interface LocalRepository {
     /**
      * Retorna um Flow com todos os locais de uma categoria específica.
      */
-    fun getLocaisPorCategoria(categoriaId: Int): Flow<List<Local>>
+    fun getLocaisPorCategoria(categoriaId: String): Flow<List<Local>>
 
     /**
      * Retorna um Flow para um local específico.
      */
-    fun getLocalDetalhes(localId: Int): Flow<Local?>
+    fun getLocalDetalhes(localId: String): Flow<Local?>
 }
