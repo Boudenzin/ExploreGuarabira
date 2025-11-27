@@ -4,9 +4,9 @@ import android.util.Log
 import androidx.compose.runtime.currentComposer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.exploreguarabiraapp.data.Categoria
-import com.example.exploreguarabiraapp.data.Local
-import com.example.exploreguarabiraapp.data.LocalRepository
+import com.example.exploreguarabiraapp.data.models.Categoria
+import com.example.exploreguarabiraapp.data.models.Local
+import com.example.exploreguarabiraapp.data.repository.LocalRepository
 import com.example.exploreguarabiraapp.ui.state.LocaisListUiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

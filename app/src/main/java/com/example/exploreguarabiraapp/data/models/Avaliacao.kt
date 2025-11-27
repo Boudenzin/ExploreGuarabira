@@ -1,4 +1,4 @@
-package com.example.exploreguarabiraapp.data
+package com.example.exploreguarabiraapp.data.models
 
 /**
  * Representa uma avaliação de usuário.

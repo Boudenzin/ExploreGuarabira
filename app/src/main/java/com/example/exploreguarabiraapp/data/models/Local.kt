@@ -1,6 +1,4 @@
-package com.example.exploreguarabiraapp.data
-
-import androidx.annotation.DrawableRes
+package com.example.exploreguarabiraapp.data.models
 
 
 /**

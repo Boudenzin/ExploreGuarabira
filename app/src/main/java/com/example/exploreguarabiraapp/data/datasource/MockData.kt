@@ -1,9 +1,19 @@
-package com.example.exploreguarabiraapp.data
+package com.example.exploreguarabiraapp.data.datasource
+
 
 import androidx.compose.ui.graphics.Color
+import com.example.exploreguarabiraapp.R
+import com.example.exploreguarabiraapp.data.models.Avaliacao
+import com.example.exploreguarabiraapp.data.models.Categoria
+import com.example.exploreguarabiraapp.data.models.Local
 
 val mockCategorias = listOf(
-    Categoria(id = "cafes", nome = "Cafeterias", iconResId = android.R.drawable.ic_menu_search, cor = Color(0xFF6D4C41)),
+    Categoria(
+        id = "cafes",
+        nome = "Cafeterias",
+        iconResId = R.drawable.ic_search,
+        cor = Color(0xFF6D4C41)
+    ),
     Categoria(id = "restaurantes", nome = "Restaurantes", iconResId = android.R.drawable.ic_menu_agenda, cor = Color(0xFFD32F2F)),
     Categoria(id = "tapiocarias", nome = "Tapiocarias", iconResId = android.R.drawable.ic_menu_edit, cor = Color(0xFFE57373)),
     Categoria(id = "centros-esportivos", nome = "Fitness & Esportes", iconResId = android.R.drawable.ic_menu_today, cor = Color(0xFF1E88E5)),

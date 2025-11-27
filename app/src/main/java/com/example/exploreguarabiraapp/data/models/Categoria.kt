@@ -1,4 +1,4 @@
-package com.example.exploreguarabiraapp.data
+package com.example.exploreguarabiraapp.data.models
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color

@@ -1,5 +1,7 @@
-package com.example.exploreguarabiraapp.data
+package com.example.exploreguarabiraapp.data.repository
 
+import com.example.exploreguarabiraapp.data.models.Categoria
+import com.example.exploreguarabiraapp.data.models.Local
 import kotlinx.coroutines.flow.Flow
 
 /**

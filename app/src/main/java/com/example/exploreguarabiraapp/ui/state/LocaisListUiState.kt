@@ -1,7 +1,7 @@
 package com.example.exploreguarabiraapp.ui.state
 
-import com.example.exploreguarabiraapp.data.Categoria
-import com.example.exploreguarabiraapp.data.Local
+import com.example.exploreguarabiraapp.data.models.Categoria
+import com.example.exploreguarabiraapp.data.models.Local
 
 data class LocaisListUiState(
     val categoria: Categoria,
