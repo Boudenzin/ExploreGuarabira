@@ -42,6 +42,7 @@ import androidx.navigation.NavController
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModel
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.compose.foundation.lazy.items
 import com.example.exploreguarabiraapp.R
 import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.repository.LocalRepositoryInstance
@@ -125,8 +126,38 @@ fun LocaisListScreen(
                         }
                     }
                 }
+
+                uiState.searchQuery.isNotEmpty() && uiState.locaisFiltrados.isEmpty() -> {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Nenhum local encontrado para a busca: \"${uiState.searchQuery}\""
+                        )
+                    }
+                }
+
+                else -> {
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Não há locais disponíveis nessa categoria"
+                        )
+                    }
+                }
+
             }
         }
+    }
+
+    uiState.selectedLocal?.let { local ->
+        LocalDetailsSheet(
+            local = local,
+            onDismiss = { viewModel.onLocalSelected(null) }
+        )
     }
 
 
