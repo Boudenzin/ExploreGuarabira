@@ -2,11 +2,14 @@ package com.example.exploreguarabiraapp.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
@@ -59,10 +62,10 @@ fun LocaisListScreen(
     //Configura o uso da snackbar
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val snackbarMesasge = rememberUpdatedState(uiState.snackbarMessage)
+    val snackbarMessage = rememberUpdatedState(uiState.snackbarMessage)
 
 
-    LaunchedEffect(snackbarMesasge) {
+    LaunchedEffect(snackbarMessage) {
         uiState.snackbarMessage?.let { message ->
             snackbarHostState.showSnackbar(
                 message = message,
@@ -107,6 +110,19 @@ fun LocaisListScreen(
                             color = MaterialTheme.colorScheme.secondary,
                             trackColor = MaterialTheme.colorScheme.surfaceVariant
                         )
+                    }
+                }
+
+                uiState.locaisFiltrados.isNotEmpty() -> {
+                    LazyColumn (
+                        contentPadding = PaddingValues(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                    ){
+                        items(uiState.locaisFiltrados) {local ->
+                            LocalListItemCard(local = local) {
+                                viewModel.onLocalSelected(local)
+                            }
+                        }
                     }
                 }
             }
