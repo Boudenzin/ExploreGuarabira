@@ -163,24 +163,6 @@ fun LocaisListScreen(
 
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LocaisTopBar(
-    title: String,
-    onBack: ( () -> Unit)? = null
-) {
-    TopAppBar(
-        title = {Text(title)},
-        navigationIcon = {
-            if (onBack != null) {
-                IconButton(onClick = onBack) {
-                    Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Voltar")
-                }
-            }
-        }
-    )
-}
-
 @SuppressLint("ViewModelConstructorInComposable")
 @Preview(showBackground = true)
 @Composable
