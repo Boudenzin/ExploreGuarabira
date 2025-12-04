@@ -105,30 +105,3 @@ fun LocalListItemCard(
 
     }
 }
-
-@Composable
-fun DetailRow(
-    icon: ImageVector,
-    text: String,
-    includeSpacer: Boolean = true
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(vertical = 6.dp)
-    )
-        {
-            Icon(
-                imageVector = icon,
-                contentDescription = null,
-                modifier = Modifier.size(20.dp),
-                tint = MaterialTheme.colorScheme.primary
-                )
-
-            Spacer(modifier = Modifier.width(12.dp))
-
-            Text(
-                text = text,
-                style = MaterialTheme.typography.bodyMedium
-            )
-    }
-}
