@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">ExploreGuarabiraApp</string>
+    <string name="top_dashboard_name">ExploraGuarabira</string>
+    <string name="top_dashboard_subtitle">Descubra os melhores lugares da sua cidade</string>
+    <string name="details_sheet_about">Sobre</string>
+    <string name="details_sheet_known">Conhecido por</string>
+    <string name="details_sheet_details">Detalhes</string>
+    <string name="details_sheet_recent_ratings">Avaliações Recentes</string>
+    <string name="details_sheet_no_recent_ratings">Nenhuma avaliação recente.</string>
 </resources>
