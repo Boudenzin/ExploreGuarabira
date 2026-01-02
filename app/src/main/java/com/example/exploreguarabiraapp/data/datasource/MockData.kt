@@ -149,7 +149,7 @@ val mockLocais: List<Local> = listOf(
         horario = "Seg-Sáb: 6h-14h",
         telefone = "(83) 3456-7899",
         conhecidoPor = listOf("Tapioca de carne seca", "Cuscuz com leite", "Suco natural", "Café regional"),
-        imageUrl = "https://images.unsplash.com/photo-1604147706283-d7119b5b822c?w=400",
+        imageUrl = "https://www.clube-fitness.com/generated_files/tapiocaria-beiju-tapiocaria1.jpg",
         avaliacoes = mockAvaliacoesTapioca
     ),
 

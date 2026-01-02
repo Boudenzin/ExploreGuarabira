@@ -27,8 +27,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.example.exploreguarabiraapp.R
 import com.example.exploreguarabiraapp.data.models.Local
 
@@ -56,11 +58,17 @@ fun LocalListItemCard(
                     .background(Color.LightGray.copy(alpha = 0.5f)),
                 contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    painter = painterResource(R.drawable.ic_help),
-                    contentDescription = local.nome,
-                    modifier = Modifier.size(48.dp)
+                AsyncImage(
+                    model = local.imageUrl,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(96.dp)
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.Crop,
+                    placeholder = painterResource(R.drawable.placeholder),
+                    error = painterResource(R.drawable.placeholder)
                 )
+
             }
 
             Spacer(modifier = Modifier.width(12.dp))
