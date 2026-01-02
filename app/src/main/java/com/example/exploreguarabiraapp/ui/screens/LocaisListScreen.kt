@@ -28,7 +28,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -59,10 +58,7 @@ fun LocaisListScreen(
     //Configura o uso da snackbar
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val snackbarMessage = rememberUpdatedState(uiState.snackbarMessage)
-
-
-    LaunchedEffect(snackbarMessage) {
+    LaunchedEffect(uiState.snackbarMessage) {
         uiState.snackbarMessage?.let { message ->
             snackbarHostState.showSnackbar(
                 message = message,

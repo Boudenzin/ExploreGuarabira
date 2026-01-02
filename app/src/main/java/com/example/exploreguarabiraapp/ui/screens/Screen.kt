@@ -1,8 +1,11 @@
 package com.example.exploreguarabiraapp.ui.screens
 
-import com.example.exploreguarabiraapp.data.models.Categoria
+sealed class Screen(val route: String) {
 
-sealed class Screen {
-    object Dashboard : Screen()
-    data class LocalList(val categoria: Categoria) : Screen()
+    object Dashboard : Screen("dashboard")
+
+    object LocalList : Screen("locais_list/{categoriaId}") {
+        fun createRoute(categoriaId: String) =
+            "locais_list/$categoriaId"
+    }
 }

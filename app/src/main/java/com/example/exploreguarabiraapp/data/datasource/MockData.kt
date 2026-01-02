@@ -10,14 +10,34 @@ import com.example.exploreguarabiraapp.data.models.Local
 val mockCategorias = listOf(
     Categoria(
         id = "cafes",
-        nome = "Cafeterias",
-        iconResId = R.drawable.ic_search,
-        cor = Color(0xFF6D4C41)
+        nome = "Cafés",
+        iconResId = R.drawable.ic_coffee,
+        cor = Color(0xFFF59E0B) // Amber 500
     ),
-    Categoria(id = "restaurantes", nome = "Restaurantes", iconResId = android.R.drawable.ic_menu_agenda, cor = Color(0xFFD32F2F)),
-    Categoria(id = "tapiocarias", nome = "Tapiocarias", iconResId = android.R.drawable.ic_menu_edit, cor = Color(0xFFE57373)),
-    Categoria(id = "centros-esportivos", nome = "Fitness & Esportes", iconResId = android.R.drawable.ic_menu_today, cor = Color(0xFF1E88E5)),
-    Categoria(id = "shopping-centers", nome = "Lojas & Shopping", iconResId = android.R.drawable.ic_menu_recent_history, cor = Color(0xFF43A047)),
+    Categoria(
+        id = "restaurantes",
+        nome = "Restaurantes",
+        iconResId = R.drawable.ic_restaurant,
+        cor = Color(0xFFEF4444) // Red 500
+    ),
+    Categoria(
+        id = "tapiocarias",
+        nome = "Tapiocarias",
+        iconResId = R.drawable.ic_tapiocaria,
+        cor = Color(0xFFEAB308) // Yellow 500
+    ),
+    Categoria(
+        id = "centros-esportivos",
+        nome = "Fitness & Esportes",
+        iconResId = R.drawable.ic_fitness_center,
+        cor = Color(0xFF3B82F6) // Blue 500
+    ),
+    Categoria(
+        id = "shopping-centers",
+        nome = "Lojas & Shopping",
+        iconResId = R.drawable.ic_shopping_bag,
+        cor = Color(0xFFA855F7) // Purple 500
+    )
 )
 
 fun getCategoriaById(id: String): Categoria {
