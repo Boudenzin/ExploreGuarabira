@@ -7,12 +7,12 @@ import com.example.exploreguarabiraapp.data.repository.LocalRepository
 
 class LocaisListViewModelFactory (
     private val repository: LocalRepository,
-    private val categoria: Categoria,
+    private val categoriaId: String
 ) : ViewModelProvider.Factory{
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LocaisListViewModel::class.java)) {
-            return LocaisListViewModel(repository, categoria) as T
+            return LocaisListViewModel(repository, categoriaId) as T
         }
         throw IllegalArgumentException("Classe de ViewModel Desconhecida (UNKNOWN)")
     }

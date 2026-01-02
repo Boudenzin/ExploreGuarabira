@@ -26,4 +26,10 @@ interface LocalRepository {
      * Retorna um Flow para um local específico.
      */
     fun getLocalDetalhes(localId: String): Flow<Local?>
+
+    /**
+     * Retorna a Categoria de acordo com o Id
+     */
+    fun getCategoriaPorId(id: String): Categoria
+
 }

@@ -37,18 +37,19 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
-import com.example.exploreguarabiraapp.R
-import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.repository.LocalRepositoryInstance
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModel
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModelFactory
 
 @Composable
 fun LocaisListScreen(
-    categoria: Categoria,
+    categoriaId: String,
     navController: NavController,
     viewModel: LocaisListViewModel = viewModel(
-        factory = LocaisListViewModelFactory(LocalRepositoryInstance, categoria)
+        factory = LocaisListViewModelFactory(
+            repository = LocalRepositoryInstance,
+            categoriaId = categoriaId
+        )
     )
 
 ) {
@@ -74,7 +75,10 @@ fun LocaisListScreen(
             SnackbarHost(snackbarHostState)
         },
         topBar = {
-            LocaisTopBar(title = categoria.nome, onBack = {navController.popBackStack()})
+            LocaisTopBar(
+                title = uiState.categoria.nome,
+                onBack = { navController.popBackStack() }
+            )
 
         }
     ){
@@ -160,21 +164,7 @@ fun LocaisListScreen(
 @Composable
 fun LocaisListScreenPreview() {
     LocaisListScreen(
-        categoria = Categoria(
-            id = "cafes",
-            nome = "Cafeterias",
-            iconResId = R.drawable.ic_search,
-            cor = Color(0xFF6D4C41)
-        ),
-        navController = NavHostController(LocalContext.current),
-        viewModel = LocaisListViewModel(
-            repository = LocalRepositoryInstance,
-            categoriaInicial = Categoria(
-                id = "cafes",
-                nome = "Cafeterias",
-                iconResId = R.drawable.ic_search,
-                cor = Color(0xFF6D4C41)
-            )
-        )
+        categoriaId = "cafes",
+        navController = NavHostController(LocalContext.current)
     )
 }

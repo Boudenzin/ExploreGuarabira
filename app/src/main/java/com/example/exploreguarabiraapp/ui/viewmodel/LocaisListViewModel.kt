@@ -1,7 +1,6 @@
 package com.example.exploreguarabiraapp.ui.viewmodel
 
 import android.util.Log
-import androidx.compose.runtime.currentComposer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.exploreguarabiraapp.data.models.Categoria
@@ -18,22 +17,39 @@ import kotlinx.coroutines.launch
 
 class LocaisListViewModel(
     private val repository: LocalRepository,
-    private val categoriaInicial: Categoria
+    private val categoriaId: String
 ) : ViewModel() {
 
+    private val categoria: Categoria =
+        repository.getCategoriaPorId(categoriaId)
+
     // _uiState privado e mutável, acessível apenas dentro do ViewModel
-    private val _uiState = MutableStateFlow(LocaisListUiState(categoria = categoriaInicial))
+    private val _uiState = MutableStateFlow(
+        LocaisListUiState(
+            categoria = categoria,
+            isLoading = true)
+    )
 
     // uiState público e imutável, exposto para a UI
     val uiState: StateFlow<LocaisListUiState> = _uiState.asStateFlow()
 
     init {
+
+        val categoria = repository.getCategoriaPorId(categoriaId)
+
+        _uiState.update {
+            it.copy(categoria = categoria)
+        }
+
         carregarLocais()
     }
 
     private fun carregarLocais() {
         viewModelScope.launch {
-            repository.getLocaisPorCategoria(categoriaInicial.id)
+            repository.getLocaisPorCategoria(categoriaId)
+                .onStart {
+                    _uiState.update { it.copy(isLoading = true) }
+                }
                 .catch { e ->
                     Log.e("LocalViewModel", "Erro ao carregar locais", e)
 
@@ -61,7 +77,6 @@ class LocaisListViewModel(
 
     fun onSearchTextChange(newText: String) {
 
-        val locais = _uiState.value.locais
         val filtrados = _uiState.value.locais.filter {
             it.nome.contains(newText, ignoreCase = true) || it.endereco.contains(newText, ignoreCase = true)
         }
