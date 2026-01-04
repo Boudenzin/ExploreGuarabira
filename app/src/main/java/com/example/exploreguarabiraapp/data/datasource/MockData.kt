@@ -1,42 +1,46 @@
 package com.example.exploreguarabiraapp.data.datasource
 
 
-import androidx.compose.ui.graphics.Color
 import com.example.exploreguarabiraapp.R
 import com.example.exploreguarabiraapp.data.models.Avaliacao
 import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.models.Local
+import com.example.exploreguarabiraapp.ui.theme.CafeColor
+import com.example.exploreguarabiraapp.ui.theme.FitnessColor
+import com.example.exploreguarabiraapp.ui.theme.RestauranteColor
+import com.example.exploreguarabiraapp.ui.theme.ShoppingColor
+import com.example.exploreguarabiraapp.ui.theme.TapiocariaColor
 
 val mockCategorias = listOf(
     Categoria(
         id = "cafes",
         nome = "Cafés",
         iconResId = R.drawable.ic_coffee,
-        cor = Color(0xFFF59E0B) // Amber 500
+        cor = CafeColor
     ),
     Categoria(
         id = "restaurantes",
         nome = "Restaurantes",
         iconResId = R.drawable.ic_restaurant,
-        cor = Color(0xFFEF4444) // Red 500
+        cor = RestauranteColor
     ),
     Categoria(
         id = "tapiocarias",
         nome = "Tapiocarias",
         iconResId = R.drawable.ic_tapiocaria,
-        cor = Color(0xFFEAB308) // Yellow 500
+        cor = TapiocariaColor
     ),
     Categoria(
         id = "centros-esportivos",
         nome = "Fitness & Esportes",
         iconResId = R.drawable.ic_fitness_center,
-        cor = Color(0xFF3B82F6) // Blue 500
+        cor = FitnessColor
     ),
     Categoria(
         id = "shopping-centers",
         nome = "Lojas & Shopping",
         iconResId = R.drawable.ic_shopping_bag,
-        cor = Color(0xFFA855F7) // Purple 500
+        cor = ShoppingColor
     )
 )
 

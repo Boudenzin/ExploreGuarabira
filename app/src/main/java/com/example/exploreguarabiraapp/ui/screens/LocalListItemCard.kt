@@ -2,6 +2,7 @@ package com.example.exploreguarabiraapp.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -25,20 +26,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.exploreguarabiraapp.R
 import com.example.exploreguarabiraapp.data.models.Local
+import com.example.exploreguarabiraapp.ui.theme.RatingStarActiveDark
+import com.example.exploreguarabiraapp.ui.theme.RatingStarActiveLight
 
 @Composable
 fun LocalListItemCard(
     local: Local,
     onClick: (Local) -> Unit)
 {
+
+    val isDark = isSystemInDarkTheme()
+
+    val activeStar = if (isDark) RatingStarActiveDark else RatingStarActiveLight
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -55,7 +61,7 @@ fun LocalListItemCard(
                 modifier = Modifier
                     .size(96.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(Color.LightGray.copy(alpha = 0.5f)),
+                    .background(MaterialTheme.colorScheme.surfaceVariant),
                 contentAlignment = Alignment.Center
             ) {
                 AsyncImage(
@@ -73,7 +79,7 @@ fun LocalListItemCard(
 
             Spacer(modifier = Modifier.width(12.dp))
 
-            Column() {
+            Column {
                 Text (
                     text = local.nome,
                     style = MaterialTheme.typography.titleMedium
@@ -85,7 +91,7 @@ fun LocalListItemCard(
                     Icon(
                         Icons.Filled.Star,
                         contentDescription = "Avaliação",
-                        tint = Color(0xFFFFC107),
+                        tint = activeStar,
                         modifier = Modifier.size(16.dp)
                     )
                     Spacer(modifier = Modifier.width(4.dp))

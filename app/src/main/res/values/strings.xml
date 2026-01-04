@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">ExploreGuarabiraApp</string>
-    <string name="top_dashboard_name">ExploraGuarabira</string>
+    <string name="top_dashboard_name">Explora Guarabira</string>
     <string name="top_dashboard_subtitle">Descubra os melhores lugares da sua cidade</string>
     <string name="details_sheet_about">Sobre</string>
     <string name="details_sheet_known">Conhecido por</string>

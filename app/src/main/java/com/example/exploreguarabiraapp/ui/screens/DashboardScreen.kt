@@ -1,6 +1,7 @@
 package com.example.exploreguarabiraapp.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,11 +20,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.repository.LocalRepository
 import com.example.exploreguarabiraapp.ui.components.DashboardTopBar
+import com.example.exploreguarabiraapp.ui.theme.DashboardGradientBottomDark
+import com.example.exploreguarabiraapp.ui.theme.DashboardGradientBottomLight
+import com.example.exploreguarabiraapp.ui.theme.DashboardGradientTopDark
+import com.example.exploreguarabiraapp.ui.theme.DashboardGradientTopLight
 
 @Composable
 fun DashboardScreen(
@@ -34,6 +38,21 @@ fun DashboardScreen(
     val categoriaState by repository.getTodasCategorias()
         .collectAsState(initial = emptyList())
 
+    val isDark = isSystemInDarkTheme()
+
+    val gradientColors = if (isDark) {
+        listOf(
+            DashboardGradientTopDark,
+            DashboardGradientBottomDark
+        )
+    } else {
+        listOf(
+            DashboardGradientTopLight,
+            DashboardGradientBottomLight
+        )
+    }
+
+
     Scaffold (
         topBar = {
             DashboardTopBar()
@@ -43,13 +62,8 @@ fun DashboardScreen(
         Box(
             modifier = Modifier.fillMaxSize()
                 .background(
-                    brush = Brush.verticalGradient(
-                        colors = listOf(
-                            Color(0xFFE3F2FD),
-                            Color(0xFFE8EAF6)
-                        )
+                    brush = Brush.verticalGradient(gradientColors)
                 )
-            )
                 .padding(paddingValues)
         ) {
 
@@ -58,7 +72,8 @@ fun DashboardScreen(
                 modifier = Modifier.fillMaxWidth()
                     .verticalScroll(rememberScrollState())
                     .padding(24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
 
                 FlowRow(

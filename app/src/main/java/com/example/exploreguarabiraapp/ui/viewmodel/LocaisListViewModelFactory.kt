@@ -2,7 +2,6 @@ package com.example.exploreguarabiraapp.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.repository.LocalRepository
 
 class LocaisListViewModelFactory (
