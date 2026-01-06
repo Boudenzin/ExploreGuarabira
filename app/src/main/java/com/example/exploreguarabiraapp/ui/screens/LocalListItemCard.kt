@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.exploreguarabiraapp.R
@@ -96,7 +97,7 @@ fun LocalListItemCard(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = "${local.avaliacaoMedia} (${local.totalAvaliacoes} avaliações) • ${local.preco}",
+                        text = "${local.avaliacaoMedia} (${local.totalAvaliacoes} avaliações)",
                         style = MaterialTheme.typography.bodySmall
                     )
                 }
@@ -106,13 +107,14 @@ fun LocalListItemCard(
                 DetailRow(
                     icon = Icons.Default.LocationOn,
                     text = local.endereco,
-                    includeSpacer = false
+                    label = stringResource(R.string.label_endereco)
+
                 )
 
                 DetailRow(
                     icon = Icons.Default.Schedule,
                     text = local.horario,
-                    includeSpacer = false
+                    label = stringResource(R.string.label_atendimento)
                 )
             }
         }

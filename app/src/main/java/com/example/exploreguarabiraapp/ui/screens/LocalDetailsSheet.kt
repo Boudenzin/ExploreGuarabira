@@ -24,7 +24,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
+import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -33,12 +35,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.exploreguarabiraapp.R
 import com.example.exploreguarabiraapp.data.models.Local
 import com.example.exploreguarabiraapp.ui.theme.RatingStarActiveDark
 import com.example.exploreguarabiraapp.ui.theme.RatingStarActiveLight
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.semantics.heading
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,6 +54,8 @@ fun LocalDetailsSheet(
     onDismiss: () -> Unit
 ) {
     val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = false)
+
+    val scope = rememberCoroutineScope()
 
     val isDark = isSystemInDarkTheme()
 
@@ -63,12 +72,48 @@ fun LocalDetailsSheet(
                 .padding(horizontal = 16.dp)
                 .verticalScroll(rememberScrollState())
         ) {
+
+            TextButton(
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .semantics {
+                        contentDescription =
+                            if (sheetState.currentValue == SheetValue.PartiallyExpanded)
+                                "Expandir detalhes do local"
+                            else
+                                "Recolher detalhes do local"
+                    },
+                onClick = {
+                    scope.launch {
+                        if (sheetState.currentValue == SheetValue.PartiallyExpanded) {
+                            sheetState.expand()
+                        } else {
+                            sheetState.partialExpand()
+                        }
+                    }
+                }
+            ) {
+                Text(
+                    text =
+                        if (sheetState.currentValue == SheetValue.PartiallyExpanded)
+                            "Expandir detalhes"
+                        else
+                            "Recolher detalhes"
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
                     .clip(RoundedCornerShape(12.dp))
-                    .background(MaterialTheme.colorScheme.surfaceVariant),
+                    .background(MaterialTheme.colorScheme.surfaceVariant)
+                    .semantics {
+                        contentDescription = "Imagem ilustrativa do local ${local.nome}"
+                    },
+
                 contentAlignment = Alignment.Center
             ) {
                 AsyncImage(
@@ -88,7 +133,8 @@ fun LocalDetailsSheet(
 
             Text(
                 text = local.nome,
-                style = MaterialTheme.typography.headlineSmall
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.semantics { heading() }
             )
 
             Spacer(modifier = Modifier.height(4.dp))
@@ -102,9 +148,12 @@ fun LocalDetailsSheet(
                     tint = activeStar
                 )
                 Text(
-                    text = "${local.avaliacaoMedia} (${local.totalAvaliacoes} avaliações) • ${local.preco}",
+                    text = "Nota ${local.avaliacaoMedia} de 5, com ${local.totalAvaliacoes} avaliações",
                     style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier.semantics {
+                        contentDescription =
+                            "Nota ${local.avaliacaoMedia} de 5 estrelas, com ${local.totalAvaliacoes} avaliações"
+                    }
                 )
             }
 
@@ -112,7 +161,8 @@ fun LocalDetailsSheet(
 
             Text(
                 text = stringResource(R.string.details_sheet_about),
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.semantics { heading() }
             )
 
             Text(
@@ -124,7 +174,8 @@ fun LocalDetailsSheet(
 
             Text(
                 text = stringResource(R.string.details_sheet_known),
-                style = MaterialTheme.typography.titleSmall
+                style = MaterialTheme.typography.titleSmall,
+                modifier = Modifier.semantics { heading() }
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -148,22 +199,26 @@ fun LocalDetailsSheet(
 
             Text(
                 text = stringResource(R.string.details_sheet_details),
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.semantics { heading() }
             )
 
             DetailRow(
                 icon = Icons.Default.LocationOn,
-                text = local.endereco
+                text = local.endereco,
+                label = stringResource(R.string.label_endereco)
             )
 
             DetailRow(
                 icon = Icons.Default.Schedule,
-                text = local.horario
+                text = local.horario,
+                label = stringResource(R.string.label_atendimento)
             )
 
             DetailRow(
                 icon = Icons.Default.Phone,
-                text = local.telefone
+                text = local.telefone,
+                label = stringResource(R.string.label_telefone)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -171,7 +226,8 @@ fun LocalDetailsSheet(
             if (local.avaliacoes.isNotEmpty()) {
                 Text(
                     text = stringResource(R.string.details_sheet_recent_ratings),
-                    style = MaterialTheme.typography.titleMedium
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.semantics { heading() }
                 )
 
                 Spacer(modifier = Modifier.height(8.dp))
@@ -186,7 +242,8 @@ fun LocalDetailsSheet(
                 Text(
                     text = stringResource(R.string.details_sheet_no_recent_ratings),
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.semantics { heading() }
 
                 )
             }

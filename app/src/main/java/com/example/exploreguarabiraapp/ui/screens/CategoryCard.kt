@@ -55,7 +55,7 @@ fun CategoryCard(
             ) {
                 Icon(
                     painter = painterResource(id = categoria.iconResId),
-                    contentDescription = categoria.nome,
+                    contentDescription = null,
                     tint = Color.White,
                     modifier = Modifier
                         .size(32.dp)

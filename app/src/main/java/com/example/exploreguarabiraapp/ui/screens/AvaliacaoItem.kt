@@ -17,6 +17,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.example.exploreguarabiraapp.data.models.Avaliacao
 import com.example.exploreguarabiraapp.ui.theme.RatingStarActiveDark
@@ -60,7 +62,11 @@ fun AvaliacaoItem(
                 style = MaterialTheme.typography.titleSmall
             )
 
-            Row {
+            Row (
+                modifier = Modifier.semantics {
+                    contentDescription = "Avaliação ${avaliacao.nota} de 5 estrelas"
+                }
+            ){
                 repeat(5) { index ->
                     Icon(
                         Icons.Filled.Star,

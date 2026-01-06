@@ -7,4 +7,8 @@
     <string name="details_sheet_details">Detalhes</string>
     <string name="details_sheet_recent_ratings">Avaliações Recentes</string>
     <string name="details_sheet_no_recent_ratings">Nenhuma avaliação recente.</string>
+    <string name="rating_accessible">Nota %1$.1f de 5, com %2$d avaliações</string>
+    <string name="label_endereco">Endereço</string>
+    <string name="label_telefone">Telefone</string>
+    <string name="label_atendimento">Horário de atendimento</string>
 </resources>

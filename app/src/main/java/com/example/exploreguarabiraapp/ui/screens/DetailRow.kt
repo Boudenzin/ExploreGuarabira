@@ -12,17 +12,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
 @Composable
 fun DetailRow(
     icon: ImageVector,
     text: String,
-    includeSpacer: Boolean = true
+    label: String,
+    spokenText: String = "$label: $text"
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier.padding(vertical = 6.dp)
+            .semantics(mergeDescendants = true) {
+                contentDescription = spokenText
+            }
     )
     {
         Icon(

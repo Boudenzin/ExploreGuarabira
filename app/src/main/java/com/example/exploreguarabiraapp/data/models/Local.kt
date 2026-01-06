@@ -16,7 +16,6 @@ data class Local(
     val categoria: Categoria,
     val avaliacaoMedia: Double,
     val totalAvaliacoes: Int,
-    val preco: String, // Ex: "$", "$$", "$$$"
     val endereco: String,
     val horario: String,
     val telefone: String,
