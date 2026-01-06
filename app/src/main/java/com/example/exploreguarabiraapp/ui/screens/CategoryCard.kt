@@ -25,13 +25,41 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.exploreguarabiraapp.data.models.Categoria
+import com.example.exploreguarabiraapp.utils.DeviceType
 
 @Composable
 fun CategoryCard(
+    deviceType: DeviceType,
     categoria: Categoria,
     onClick: (Categoria) -> Unit,
     modifier: Modifier = Modifier
 ) {
+
+    val iconBoxSize = when (deviceType) {
+        DeviceType.PHONE -> 64.dp
+        DeviceType.TABLET -> 72.dp
+        DeviceType.DESKTOP -> 80.dp
+    }
+
+    val iconSize = when (deviceType) {
+        DeviceType.PHONE -> 32.dp
+        DeviceType.TABLET -> 40.dp
+        DeviceType.DESKTOP -> 48.dp
+    }
+
+    val textStyle = when (deviceType) {
+        DeviceType.PHONE -> MaterialTheme.typography.titleMedium
+        DeviceType.TABLET -> MaterialTheme.typography.titleLarge
+        DeviceType.DESKTOP -> MaterialTheme.typography.headlineSmall
+    }
+
+    val padding = when (deviceType) {
+        DeviceType.PHONE -> 16.dp
+        DeviceType.TABLET -> 24.dp
+        DeviceType.DESKTOP -> 32.dp
+    }
+
+
     Card(
         modifier = modifier
             .clickable { onClick(categoria)},
@@ -40,13 +68,13 @@ fun CategoryCard(
     ) {
         Column(
             modifier = Modifier.fillMaxWidth()
-                .padding(20.dp),
+                .padding(padding),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
             Box(
                 modifier = Modifier
-                    .size(64.dp)
+                    .size(iconBoxSize)
                     .background(
                         color = categoria.cor,
                         shape = RoundedCornerShape(16.dp)
@@ -57,16 +85,15 @@ fun CategoryCard(
                     painter = painterResource(id = categoria.iconResId),
                     contentDescription = null,
                     tint = Color.White,
-                    modifier = Modifier
-                        .size(32.dp)
+                    modifier = Modifier.size(iconSize)
                 )
             }
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(16.dp))
 
             Text(
                 text = categoria.nome,
-                style = MaterialTheme.typography.titleMedium,
+                style = textStyle,
                 textAlign = TextAlign.Center,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis
