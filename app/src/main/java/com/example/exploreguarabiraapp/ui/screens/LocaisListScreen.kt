@@ -8,10 +8,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.CircularProgressIndicator
@@ -31,14 +35,19 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.exploreguarabiraapp.data.repository.LocalRepositoryInstance
+import com.example.exploreguarabiraapp.ui.theme.LocalSpacing
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModel
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModelFactory
+import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
+import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
 
 @Composable
 fun LocaisListScreen(
@@ -52,6 +61,17 @@ fun LocaisListScreen(
     )
 
 ) {
+
+    val adaptiveLayout = LocalAdaptiveLayout.current
+    val spacing = LocalSpacing.current
+
+    val contextMaxWidth = when (adaptiveLayout) {
+        AdaptiveLayout.COMPACT -> Modifier.fillMaxWidth()
+        AdaptiveLayout.MEDIUM -> Modifier.widthIn(max = 720.dp)
+        AdaptiveLayout.EXPANDED -> Modifier.widthIn(max = 840.dp)
+    }
+
+
     //Coleta do estado completo
     val uiState by viewModel.uiState.collectAsState()
 
@@ -80,84 +100,118 @@ fun LocaisListScreen(
             )
 
         }
-    ){
-        innerPadding ->
+    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
+                .imePadding(),
+            verticalArrangement = Arrangement.Top
 
         ) {
-            OutlinedTextField(
-                value = uiState.searchQuery,
-                onValueChange = { viewModel.onSearchTextChange(it) },
-                leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
-                placeholder = { Text(
-                    text = "Buscar estabelecimentos...",
-                ) },
+
+            Column(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                shape = RoundedCornerShape(24.dp)
+                    .fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Column(
+                    modifier = Modifier
+                        .then(contextMaxWidth)
+                ) {
+                    OutlinedTextField(
+                        value = uiState.searchQuery,
+                        onValueChange = { viewModel.onSearchTextChange(it) },
+                        leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
+                        placeholder = {
+                            Text(
+                                text = "Buscar estabelecimentos...",
+                                style = MaterialTheme.typography.bodyLarge
+                            )
+                        },
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(
+                            imeAction = ImeAction.Search
+                        ),
+                        keyboardActions = KeyboardActions(
+                            onSearch = {
+                                defaultKeyboardAction(ImeAction.Search)
+                            }
+                        ),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(
+                                horizontal = spacing.md,
+                                vertical = spacing.sm
+                            ),
+                        shape = RoundedCornerShape(24.dp)
 
-            )
-            when {
-                uiState.isLoading -> {
-                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator(
-                            color = MaterialTheme.colorScheme.secondary,
-                            trackColor = MaterialTheme.colorScheme.surfaceVariant
-                        )
-                    }
-                }
-
-                uiState.locaisFiltrados.isNotEmpty() -> {
-                    LazyColumn (
-                        contentPadding = PaddingValues(16.dp),
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
-                    ){
-                        items(uiState.locaisFiltrados) {local ->
-                            LocalListItemCard(local = local) {
-                                viewModel.onLocalSelected(local)
+                    )
+                    when {
+                        uiState.isLoading -> {
+                            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                                CircularProgressIndicator(
+                                    color = MaterialTheme.colorScheme.secondary,
+                                    trackColor = MaterialTheme.colorScheme.surfaceVariant
+                                )
                             }
                         }
+
+                        uiState.locaisFiltrados.isNotEmpty() -> {
+                            LazyColumn(
+                                modifier = Modifier.fillMaxWidth(),
+                                contentPadding = PaddingValues(spacing.md),
+                                verticalArrangement = Arrangement.spacedBy(spacing.sm)
+                            ) {
+                                items(uiState.locaisFiltrados) { local ->
+                                    LocalListItemCard(local = local) {
+                                        viewModel.onLocalSelected(local)
+                                    }
+                                }
+                            }
+                        }
+
+                        uiState.searchQuery.isNotEmpty() && uiState.locaisFiltrados.isEmpty() -> {
+                            Box(
+                                modifier = Modifier.fillMaxWidth()
+                                    .padding(top = spacing.lg),
+                                contentAlignment = Alignment.Center,
+                            ) {
+                                Text(
+                                    text = "Nenhum local encontrado para a busca: \"${uiState.searchQuery}\"",
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+                        }
+
+                        else -> {
+                            Box(
+                                modifier = Modifier.fillMaxSize()
+                                    .padding(top = spacing.lg),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = "Não há locais disponíveis nessa categoria",
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    textAlign = TextAlign.Center
+                                )
+                            }
+                        }
+
                     }
                 }
+            }
 
-                uiState.searchQuery.isNotEmpty() && uiState.locaisFiltrados.isEmpty() -> {
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Nenhum local encontrado para a busca: \"${uiState.searchQuery}\""
-                        )
-                    }
-                }
-
-                else -> {
-                    Box(
-                        modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = "Não há locais disponíveis nessa categoria"
-                        )
-                    }
-                }
-
+            uiState.selectedLocal?.let { local ->
+                LocalDetailsSheet(
+                    local = local,
+                    onDismiss = { viewModel.onLocalSelected(null) }
+                )
             }
         }
     }
-
-    uiState.selectedLocal?.let { local ->
-        LocalDetailsSheet(
-            local = local,
-            onDismiss = { viewModel.onLocalSelected(null) }
-        )
-    }
-
 
 }
 
