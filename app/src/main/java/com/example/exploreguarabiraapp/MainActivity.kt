@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.exploreguarabiraapp.ui.screens.AppNavHost
 import com.example.exploreguarabiraapp.ui.theme.ExploreGuarabiraAppTheme
+import com.example.exploreguarabiraapp.utils.adaptive.ProvideAdaptiveLayout
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,9 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             ExploreGuarabiraAppTheme {
-                AppNavHost()
+                ProvideAdaptiveLayout(activity = this) {
+                    AppNavHost()
+                }
             }
         }
     }

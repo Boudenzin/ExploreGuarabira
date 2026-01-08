@@ -2,11 +2,10 @@ package com.example.exploreguarabiraapp.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,38 +24,37 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.exploreguarabiraapp.data.models.Categoria
-import com.example.exploreguarabiraapp.utils.DeviceType
+import com.example.exploreguarabiraapp.ui.theme.LocalSpacing
+import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
+import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
 
 @Composable
 fun CategoryCard(
-    deviceType: DeviceType,
     categoria: Categoria,
     onClick: (Categoria) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
-    val iconBoxSize = when (deviceType) {
-        DeviceType.PHONE -> 64.dp
-        DeviceType.TABLET -> 72.dp
-        DeviceType.DESKTOP -> 80.dp
+    val adaptiveLayout = LocalAdaptiveLayout.current
+    val spacing = LocalSpacing.current
+
+
+    val iconBoxSize = when (adaptiveLayout) {
+        AdaptiveLayout.COMPACT -> 64.dp
+        AdaptiveLayout.MEDIUM -> 72.dp
+        AdaptiveLayout.EXPANDED -> 80.dp
     }
 
-    val iconSize = when (deviceType) {
-        DeviceType.PHONE -> 32.dp
-        DeviceType.TABLET -> 40.dp
-        DeviceType.DESKTOP -> 48.dp
+    val iconSize = when (adaptiveLayout) {
+        AdaptiveLayout.COMPACT -> 32.dp
+        AdaptiveLayout.MEDIUM -> 40.dp
+        AdaptiveLayout.EXPANDED -> 48.dp
     }
 
-    val textStyle = when (deviceType) {
-        DeviceType.PHONE -> MaterialTheme.typography.titleMedium
-        DeviceType.TABLET -> MaterialTheme.typography.titleLarge
-        DeviceType.DESKTOP -> MaterialTheme.typography.headlineSmall
-    }
-
-    val padding = when (deviceType) {
-        DeviceType.PHONE -> 16.dp
-        DeviceType.TABLET -> 24.dp
-        DeviceType.DESKTOP -> 32.dp
+    val textStyle = when (adaptiveLayout) {
+        AdaptiveLayout.COMPACT -> MaterialTheme.typography.titleMedium
+        AdaptiveLayout.MEDIUM -> MaterialTheme.typography.titleLarge
+        AdaptiveLayout.EXPANDED -> MaterialTheme.typography.headlineSmall
     }
 
 
@@ -66,11 +64,13 @@ fun CategoryCard(
         shape = RoundedCornerShape(24.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 6.dp)
     ) {
+        Box(
+            modifier = Modifier.fillMaxSize()
+                .padding(spacing.md),
+            contentAlignment = Alignment.Center
+        ) {
         Column(
-            modifier = Modifier.fillMaxWidth()
-                .padding(padding),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Box(
                 modifier = Modifier
@@ -89,7 +89,7 @@ fun CategoryCard(
                 )
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(spacing.sm))
 
             Text(
                 text = categoria.nome,
@@ -99,6 +99,7 @@ fun CategoryCard(
                 overflow = TextOverflow.Ellipsis
 
             )
+        }
 
         }
     }

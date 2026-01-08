@@ -9,39 +9,37 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import com.example.exploreguarabiraapp.R
-import com.example.exploreguarabiraapp.utils.DeviceType
+import com.example.exploreguarabiraapp.ui.theme.LocalSpacing
+import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
+import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
 
 @Composable
-fun DashboardTopBar(
-    deviceType: DeviceType
-) {
+fun DashboardTopBar() {
 
-    val titleStyle = when (deviceType) {
-        DeviceType.PHONE -> MaterialTheme.typography.titleLarge
-        DeviceType.TABLET -> MaterialTheme.typography.headlineSmall
-        DeviceType.DESKTOP -> MaterialTheme.typography.headlineMedium
+    val adaptiveLayout = LocalAdaptiveLayout.current
+    val spacing = LocalSpacing.current
+
+    val titleStyle = when (adaptiveLayout) {
+        AdaptiveLayout.COMPACT -> MaterialTheme.typography.titleLarge
+        AdaptiveLayout.MEDIUM -> MaterialTheme.typography.headlineSmall
+        AdaptiveLayout.EXPANDED -> MaterialTheme.typography.headlineMedium
     }
 
-    val subtitleStyle = when (deviceType) {
-        DeviceType.PHONE -> MaterialTheme.typography.bodySmall
-        DeviceType.TABLET -> MaterialTheme.typography.bodyMedium
-        DeviceType.DESKTOP -> MaterialTheme.typography.bodyLarge
+    val subtitleStyle = when (adaptiveLayout) {
+        AdaptiveLayout.COMPACT -> MaterialTheme.typography.bodySmall
+        AdaptiveLayout.MEDIUM -> MaterialTheme.typography.bodyMedium
+        AdaptiveLayout.EXPANDED -> MaterialTheme.typography.bodyLarge
     }
 
-    val verticalPadding = when (deviceType) {
-        DeviceType.PHONE -> 40.dp
-        DeviceType.TABLET -> 32.dp
-        DeviceType.DESKTOP -> 40.dp
-    }
+
 
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                top = verticalPadding,
-                bottom = verticalPadding / 2
+                top = spacing.xl,
+                bottom = spacing.md
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
