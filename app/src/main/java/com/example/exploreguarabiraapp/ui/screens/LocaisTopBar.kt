@@ -16,6 +16,7 @@ fun LocaisTopBar(
     onBack: ( () -> Unit)? = null
 ) {
     TopAppBar(
+        //TODO: IMPLEMENTAR RESPONSIVIDADE
         title = {Text(title)},
         navigationIcon = {
             if (onBack != null) {

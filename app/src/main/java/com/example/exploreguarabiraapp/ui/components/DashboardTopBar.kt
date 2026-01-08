@@ -45,7 +45,8 @@ fun DashboardTopBar() {
     ) {
         Text(
             text = stringResource(R.string.top_dashboard_name),
-            style = titleStyle
+            style = titleStyle,
+            color = MaterialTheme.colorScheme.onSurface
         )
         Text(
             text = stringResource(R.string.top_dashboard_subtitle),

@@ -17,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.repository.LocalRepository
@@ -62,6 +63,7 @@ fun DashboardScreen(
 
 
     Scaffold (
+        containerColor = Color.Transparent,
         topBar = {
             DashboardTopBar()
         }
