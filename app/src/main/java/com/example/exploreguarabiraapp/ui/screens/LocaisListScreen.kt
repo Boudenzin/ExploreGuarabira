@@ -5,14 +5,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -70,6 +69,16 @@ fun LocaisListScreen(
         AdaptiveLayout.MEDIUM -> Modifier.widthIn(max = 720.dp)
         AdaptiveLayout.EXPANDED -> Modifier.widthIn(max = 840.dp)
     }
+
+    val masterWeight = when (adaptiveLayout) {
+        AdaptiveLayout.MEDIUM -> 0.45f
+        AdaptiveLayout.EXPANDED -> 0.4f
+        else -> 1f
+    }
+
+
+    val detailWeight = 1f - masterWeight
+
 
 
     //Coleta do estado completo
@@ -148,67 +157,105 @@ fun LocaisListScreen(
                         shape = RoundedCornerShape(24.dp)
 
                     )
-                    when {
-                        uiState.isLoading -> {
-                            Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                                CircularProgressIndicator(
-                                    color = MaterialTheme.colorScheme.secondary,
-                                    trackColor = MaterialTheme.colorScheme.surfaceVariant
-                                )
-                            }
-                        }
 
-                        uiState.locaisFiltrados.isNotEmpty() -> {
-                            LazyColumn(
-                                modifier = Modifier.fillMaxWidth(),
-                                contentPadding = PaddingValues(spacing.md),
-                                verticalArrangement = Arrangement.spacedBy(spacing.sm)
-                            ) {
-                                items(uiState.locaisFiltrados) { local ->
-                                    LocalListItemCard(local = local) {
-                                        viewModel.onLocalSelected(local)
-                                    }
-                                }
-                            }
-                        }
+                } //context
+            }
 
-                        uiState.searchQuery.isNotEmpty() && uiState.locaisFiltrados.isEmpty() -> {
-                            Box(
-                                modifier = Modifier.fillMaxWidth()
-                                    .padding(top = spacing.lg),
-                                contentAlignment = Alignment.Center,
+            when {
+                uiState.isLoading -> {
+                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                        CircularProgressIndicator(
+                            color = MaterialTheme.colorScheme.secondary,
+                            trackColor = MaterialTheme.colorScheme.surfaceVariant
+                        )
+                    }
+                }
+
+                uiState.locaisFiltrados.isNotEmpty() -> {
+                    when (adaptiveLayout) {
+
+                        AdaptiveLayout.COMPACT -> {
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .then(contextMaxWidth)
+                                    .align(Alignment.CenterHorizontally)
                             ) {
-                                Text(
-                                    text = "Nenhum local encontrado para a busca: \"${uiState.searchQuery}\"",
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    textAlign = TextAlign.Center
+                                LocalList(
+                                    locals = uiState.locaisFiltrados,
+                                    onItemClick = viewModel::onLocalSelected
                                 )
                             }
                         }
 
                         else -> {
-                            Box(
+                            Row(
                                 modifier = Modifier.fillMaxSize()
-                                    .padding(top = spacing.lg),
-                                contentAlignment = Alignment.Center
                             ) {
-                                Text(
-                                    text = "Não há locais disponíveis nessa categoria",
-                                    style = MaterialTheme.typography.bodyLarge,
-                                    textAlign = TextAlign.Center
-                                )
+
+                                // MASTER
+                                Box(modifier = Modifier.weight(masterWeight)
+                                    .widthIn(360.dp)) {
+                                    LocalList(
+                                        locals = uiState.locaisFiltrados,
+                                        onItemClick = viewModel::onLocalSelected
+                                    )
+                                }
+
+                                // DETAIL
+                                Box(
+                                    modifier = Modifier
+                                        .weight(detailWeight)
+                                ) {
+                                    uiState.selectedLocal?.let {
+                                        LocalDetailsContent(
+                                            local = it,
+                                            modifier = Modifier.fillMaxSize()
+                                        )
+                                    } ?: EmptyDetailState()
+                                }
                             }
                         }
-
                     }
                 }
+
+                uiState.searchQuery.isNotEmpty() && uiState.locaisFiltrados.isEmpty() -> {
+                    Box(
+                        modifier = Modifier.fillMaxWidth()
+                            .padding(top = spacing.lg),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Text(
+                            text = "Nenhum local encontrado para a busca: \"${uiState.searchQuery}\"",
+                            style = MaterialTheme.typography.bodyLarge,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+
+                else -> {
+                    Box(
+                        modifier = Modifier.fillMaxSize()
+                            .padding(top = spacing.lg),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "Não há locais disponíveis nessa categoria",
+                            style = MaterialTheme.typography.bodyLarge,
+                            textAlign = TextAlign.Center
+                        )
+                    }
+                }
+
             }
 
-            uiState.selectedLocal?.let { local ->
-                LocalDetailsSheet(
-                    local = local,
-                    onDismiss = { viewModel.onLocalSelected(null) }
-                )
+            if (adaptiveLayout == AdaptiveLayout.COMPACT) {
+                uiState.selectedLocal?.let { local ->
+                    LocalDetailsSheet(
+                        local = local,
+                        onDismiss = { viewModel.onLocalSelected(null) }
+                    )
+                }
             }
         }
     }

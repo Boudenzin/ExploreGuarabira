@@ -15,26 +15,51 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import com.example.exploreguarabiraapp.utils.DetailRowStyle
 
 @Composable
 fun DetailRow(
     icon: ImageVector,
     text: String,
     label: String,
+    style: DetailRowStyle,
     spokenText: String = "$label: $text"
 ) {
+
+    val typography = when (style) {
+        DetailRowStyle.COMPACT -> MaterialTheme.typography.bodyMedium
+        DetailRowStyle.EXPANDED -> MaterialTheme.typography.bodyLarge
+    }
+
+    val iconSize = when (style) {
+        DetailRowStyle.COMPACT -> 16.dp
+        DetailRowStyle.EXPANDED -> 20.dp
+    }
+
+    val verticalPadding = when (style) {
+        DetailRowStyle.COMPACT -> 2.dp
+        DetailRowStyle.EXPANDED -> 6.dp
+    }
+
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(vertical = 6.dp)
-            .semantics(mergeDescendants = true) {
-                contentDescription = spokenText
-            }
+        modifier = Modifier
+            .padding(vertical = verticalPadding)
+            .then(
+                if (style == DetailRowStyle.EXPANDED) {
+                    Modifier.semantics(mergeDescendants = true) {
+                        contentDescription = spokenText
+                    }
+                } else {
+                    Modifier
+                }
+            )
     )
     {
         Icon(
             imageVector = icon,
             contentDescription = null,
-            modifier = Modifier.size(20.dp),
+            modifier = Modifier.size(iconSize),
             tint = MaterialTheme.colorScheme.primary
         )
 
@@ -42,7 +67,7 @@ fun DetailRow(
 
         Text(
             text = text,
-            style = MaterialTheme.typography.bodyMedium
+            style = typography
         )
     }
 }
