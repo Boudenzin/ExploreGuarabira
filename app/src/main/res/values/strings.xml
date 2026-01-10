@@ -12,4 +12,6 @@
     <string name="label_telefone">Telefone</string>
     <string name="label_atendimento">Horário de atendimento</string>
     <string name="rating_content_description">Avaliação</string>
+    <string name="search_bar_placeholder">Buscar estabelecimentos...</string>
+    <string name="no_results_search">Não há locais disponíveis nessa categoria</string>
 </resources>
