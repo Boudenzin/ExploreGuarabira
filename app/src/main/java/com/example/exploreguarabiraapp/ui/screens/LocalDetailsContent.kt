@@ -50,6 +50,24 @@ fun LocalDetailsContent(
     val isDark = isSystemInDarkTheme()
     val activeStar = if (isDark) RatingStarActiveDark else RatingStarActiveLight
 
+    val imageDescription = stringResource(
+        R.string.local_image_description,
+        local.nome
+    )
+
+    val ratingText = stringResource(
+        R.string.local_rating_text,
+        local.avaliacaoMedia,
+        local.totalAvaliacoes
+    )
+
+    val ratingA11yText = stringResource(
+        R.string.local_rating_accessibility,
+        local.avaliacaoMedia,
+        local.totalAvaliacoes
+    )
+
+
     Column(
         modifier = modifier
             .padding(horizontal = 16.dp)
@@ -63,7 +81,7 @@ fun LocalDetailsContent(
                 .clip(RoundedCornerShape(12.dp))
                 .background(MaterialTheme.colorScheme.surfaceVariant)
                 .semantics {
-                    contentDescription = "Imagem ilustrativa do local ${local.nome}"
+                    contentDescription = imageDescription
                 },
             contentAlignment = Alignment.Center
         ) {
@@ -94,11 +112,10 @@ fun LocalDetailsContent(
                 tint = activeStar
             )
             Text(
-                text = "Nota ${local.avaliacaoMedia} de 5, com ${local.totalAvaliacoes} avaliações",
+                text = ratingText,
                 style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.semantics {
-                    contentDescription =
-                        "Nota ${local.avaliacaoMedia} de 5 estrelas, com ${local.totalAvaliacoes} avaliações"
+                    contentDescription = ratingA11yText
                 }
             )
         }

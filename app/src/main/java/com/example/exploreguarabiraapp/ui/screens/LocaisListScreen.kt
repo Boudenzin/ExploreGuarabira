@@ -24,13 +24,14 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.exploreguarabiraapp.R
+import com.example.exploreguarabiraapp.data.MasterDetailWeights
 import com.example.exploreguarabiraapp.data.repository.LocalRepositoryInstance
 import com.example.exploreguarabiraapp.ui.theme.LocalSpacing
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModel
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModelFactory
 import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
 import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
-import com.example.exploreguarabiraapp.R
 
 @Composable
 fun LocaisListScreen(
@@ -48,20 +49,9 @@ fun LocaisListScreen(
     val adaptiveLayout = LocalAdaptiveLayout.current
     val spacing = LocalSpacing.current
 
-    val contextMaxWidth = when (adaptiveLayout) {
-        AdaptiveLayout.COMPACT -> Modifier.fillMaxWidth()
-        AdaptiveLayout.MEDIUM -> Modifier.widthIn(max = 720.dp)
-        AdaptiveLayout.EXPANDED -> Modifier.widthIn(max = 840.dp)
-    }
+    val contextMaxWidth = adaptiveContentWidth(adaptiveLayout)
 
-    val masterWeight = when (adaptiveLayout) {
-        AdaptiveLayout.MEDIUM -> 0.45f
-        AdaptiveLayout.EXPANDED -> 0.4f
-        else -> 1f
-    }
-
-
-    val detailWeight = 1f - masterWeight
+    val weights = masterDetailWeights(adaptiveLayout)
 
 
 
@@ -140,20 +130,20 @@ fun LocaisListScreen(
                         onLocalClick = viewModel::onLocalSelected,
                         onDismissDetail = { viewModel.onLocalSelected(null) },
                         contextMaxWidth = contextMaxWidth,
-                        masterWeight = masterWeight,
-                        detailWeight = detailWeight
+                        masterWeight = weights.master,
+                        detailWeight = weights.detail
                     )
                 }
 
                 uiState.searchQuery.isNotEmpty() && uiState.locaisFiltrados.isEmpty() -> {
                     LocaisEmptyState(
-                        message = "Nenhum local encontrado para a busca: \"${uiState.searchQuery}\""
+                        message = stringResource(R.string.no_results_for_query)
                     )
                 }
 
                 else -> {
                     LocaisEmptyState(
-                        message = stringResource(R.string.no_results_search),
+                        message = stringResource(R.string.no_results_category),
                         modifier = Modifier.fillMaxSize()
                     )
                 }
@@ -171,3 +161,19 @@ fun LocaisListScreen(
         }
     }
 }
+
+fun masterDetailWeights(adaptiveLayout: AdaptiveLayout) =
+    when (adaptiveLayout) {
+        AdaptiveLayout.MEDIUM -> MasterDetailWeights(0.45f, 0.55f)
+        AdaptiveLayout.EXPANDED -> MasterDetailWeights(0.4f, 0.6f)
+        else -> MasterDetailWeights(1f, 0f)
+    }
+
+@Composable
+fun adaptiveContentWidth(adaptiveLayout: AdaptiveLayout): Modifier =
+    when (adaptiveLayout) {
+        AdaptiveLayout.COMPACT -> Modifier.fillMaxWidth()
+        AdaptiveLayout.MEDIUM -> Modifier.widthIn(max = 720.dp)
+        AdaptiveLayout.EXPANDED -> Modifier.widthIn(max = 840.dp)
+    }
+
