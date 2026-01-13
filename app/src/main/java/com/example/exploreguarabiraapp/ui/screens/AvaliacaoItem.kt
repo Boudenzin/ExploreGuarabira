@@ -17,6 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
@@ -25,6 +26,7 @@ import com.example.exploreguarabiraapp.ui.theme.RatingStarActiveDark
 import com.example.exploreguarabiraapp.ui.theme.RatingStarActiveLight
 import com.example.exploreguarabiraapp.ui.theme.RatingStarInactiveDark
 import com.example.exploreguarabiraapp.ui.theme.RatingStarInactiveLight
+import com.example.exploreguarabiraapp.R
 
 @Composable
 fun AvaliacaoItem(
@@ -34,6 +36,11 @@ fun AvaliacaoItem(
 
     val activeStar = if (isDark) RatingStarActiveDark else RatingStarActiveLight
     val inactiveStar = if (isDark) RatingStarInactiveDark else RatingStarInactiveLight
+
+    val starsDescription = stringResource(
+        R.string.stars_description,
+        avaliacao.nota
+    )
 
     Row(
         verticalAlignment = Alignment.Top
@@ -64,7 +71,7 @@ fun AvaliacaoItem(
 
             Row (
                 modifier = Modifier.semantics {
-                    contentDescription = "Avaliação ${avaliacao.nota} de 5 estrelas"
+                    contentDescription = starsDescription //
                 }
             ){
                 repeat(5) { index ->

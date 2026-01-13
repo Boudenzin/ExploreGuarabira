@@ -7,6 +7,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.example.exploreguarabiraapp.R
 
 @Composable
 fun EmptyDetailState() {
@@ -15,7 +17,7 @@ fun EmptyDetailState() {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "Selecione um local para ver os detalhes",
+            text = stringResource(R.string.empty_state_text),
             style = MaterialTheme.typography.bodyMedium
         )
     }

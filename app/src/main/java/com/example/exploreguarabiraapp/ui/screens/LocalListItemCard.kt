@@ -129,7 +129,11 @@ fun LocalListItemCard(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = "${local.avaliacaoMedia} (${local.totalAvaliacoes} avaliações)",
+                        text = stringResource(
+                            R.string.local_rating_short,
+                            local.avaliacaoMedia,
+                            local.totalAvaliacoes,
+                        ),
                         style = bodyStyle
                     )
                 }

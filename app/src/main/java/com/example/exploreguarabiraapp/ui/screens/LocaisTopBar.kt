@@ -9,8 +9,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
 import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
 import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
+import com.example.exploreguarabiraapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +41,7 @@ fun LocaisTopBar(
                 IconButton(onClick = onBack) {
                     Icon(
                         Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Voltar"
+                        contentDescription = stringResource(R.string.back_button_description)
                     )
                 }
             }
