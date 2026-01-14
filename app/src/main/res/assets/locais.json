@@ -1,0 +1,202 @@
+[
+  {
+    "id": "cafe-1",
+    "nome": "Café Aroma",
+    "descricao": "Cafeteria aconchegante com grãos especiais e ambiente familiar. Perfeito para trabalhar ou encontrar amigos.",
+    "categoriaId": "cafes",
+    "avaliacaoMedia": 4.8,
+    "totalAvaliacoes": 156,
+    "endereco": "Rua das Flores, 123 - Centro",
+    "horario": "Seg-Sex: 7h-19h",
+    "telefone": "(83) 3456-7890",
+    "conhecidoPor": [
+      "Café expresso premiado",
+      "Bolos caseiros",
+      "Wi-Fi gratuito",
+      "Ambiente tranquilo"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400",
+    "avaliacoes": [
+      {
+        "autor": "Pedro Peterson",
+        "nota": 5,
+        "comentario": "Melhor café da cidade! Ambiente ideal para leitura."
+      },
+      {
+        "autor": "Ana Beatriz Rocha",
+        "nota": 4,
+        "comentario": "Sempre volto pelo pão de queijo. Perfeito."
+      },
+      {
+        "autor": "Larissa Pereira",
+        "nota": 5,
+        "comentario": "Grãos premium e atendimento impecável."
+      }
+    ]
+  },
+  {
+    "id": "cafe-2",
+    "nome": "Café do Ponto",
+    "descricao": "Tradicional café da manhã e lanches rápidos. Atende a comunidade há mais de 15 anos.",
+    "categoriaId": "cafes",
+    "avaliacaoMedia": 4.6,
+    "totalAvaliacoes": 89,
+    "endereco": "Av. Principal, 456 - Bairro Novo",
+    "horario": "Seg-Sáb: 6h30-20h",
+    "telefone": "(83) 3456-7891",
+    "conhecidoPor": [
+      "Café da manhã completo",
+      "Pão na chapa",
+      "Atendimento rápido",
+      "Preços acessíveis"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
+    "avaliacoes": [
+      {
+        "autor": "Pedro F.",
+        "nota": 4,
+        "comentario": "Café com leite tradicional e saboroso."
+      }
+    ]
+  },
+  {
+    "id": "rest-1",
+    "nome": "Restaurante Sabor da Terra",
+    "descricao": "Comida caseira com tempero especial da vovó. Buffet variado e pratos à la carte.",
+    "categoriaId": "restaurantes",
+    "avaliacaoMedia": 4.7,
+    "totalAvaliacoes": 312,
+    "endereco": "Av. Central, 234 - Centro",
+    "horario": "Seg-Dom: 11h-23h",
+    "telefone": "(83) 3456-7894",
+    "conhecidoPor": [
+      "Feijoada aos sábados",
+      "Buffet self-service",
+      "Sobremesas caseiras",
+      "Ambiente familiar"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400",
+    "avaliacoes": [
+      {
+        "autor": "Ana D.",
+        "nota": 5,
+        "comentario": "Experiência gastronômica incrível. O risoto é divino."
+      },
+      {
+        "autor": "Bruno E.",
+        "nota": 4,
+        "comentario": "Ótimo para um jantar romântico, mas o preço é salgado."
+      }
+    ]
+  },
+  {
+    "id": "rest-2",
+    "nome": "Churrascaria Bom Gosto",
+    "descricao": "Rodízio de carnes nobres com buffet completo. Ambiente climatizado e espaçoso.",
+    "categoriaId": "restaurantes",
+    "avaliacaoMedia": 4.8,
+    "totalAvaliacoes": 445,
+    "endereco": "Rua da Liberdade, 567 - Vila Nova",
+    "horario": "Seg-Dom: 11h-15h, 18h-23h",
+    "telefone": "(83) 3456-7895",
+    "conhecidoPor": [
+      "Picanha de primeira",
+      "Rodízio completo",
+      "Buffet variado",
+      "Churrasco no almoço"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400",
+    "avaliacoes": [
+      {
+        "autor": "Rafa S.",
+        "nota": 5,
+        "comentario": "Carnes sempre no ponto. Top demais."
+      }
+    ]
+  },
+  {
+    "id": "tap-1",
+    "nome": "Tapioca & Sabor",
+    "descricao": "Tapiocas recheadas e cuscuz nordestino. Café da manhã típico regional.",
+    "categoriaId": "tapiocarias",
+    "avaliacaoMedia": 4.5,
+    "totalAvaliacoes": 143,
+    "endereco": "Rua Nordeste, 123 - Centro",
+    "horario": "Seg-Sáb: 6h-14h",
+    "telefone": "(83) 3456-7899",
+    "conhecidoPor": [
+      "Tapioca de carne seca",
+      "Cuscuz com leite",
+      "Suco natural",
+      "Café regional"
+    ],
+    "imageUrl": "https://www.clube-fitness.com/generated_files/tapiocaria-beiju-tapiocaria1.jpg",
+    "avaliacoes": [
+      {
+        "autor": "Felipe G.",
+        "nota": 5,
+        "comentario": "A tapioca de carne de sol é a melhor que já comi!"
+      },
+      {
+        "autor": "Gabi H.",
+        "nota": 4,
+        "comentario": "Rápido, gostoso e barato. Ponto de parada obrigatório."
+      }
+    ]
+  },
+  {
+    "id": "sport-1",
+    "nome": "Academia FitLife",
+    "descricao": "Academia completa com equipamentos modernos e profissionais qualificados.",
+    "categoriaId": "centros-esportivos",
+    "avaliacaoMedia": 4.6,
+    "totalAvaliacoes": 234,
+    "endereco": "Av. dos Esportes, 456 - Jardim Atlético",
+    "horario": "Seg-Sex: 6h-22h, Sáb: 8h-14h",
+    "telefone": "(83) 3456-7803",
+    "conhecidoPor": [
+      "Musculação completa",
+      "Aulas coletivas",
+      "Personal trainer",
+      "Área cardio"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400",
+    "avaliacoes": [
+      {
+        "autor": "Higor I.",
+        "nota": 5,
+        "comentario": "Equipamentos novos e professores atenciosos."
+      },
+      {
+        "autor": "Júlia L.",
+        "nota": 4,
+        "comentario": "Aulas de funcional excelentes, recomendo a todos!"
+      }
+    ]
+  },
+  {
+    "id": "shop-1",
+    "nome": "Shopping Central Plaza",
+    "descricao": "Shopping tradicional do centro com lojas variadas e praça de alimentação completa.",
+    "categoriaId": "shopping-centers",
+    "avaliacaoMedia": 4.5,
+    "totalAvaliacoes": 1234,
+    "endereco": "Av. Brasil, 1000 - Centro",
+    "horario": "Seg-Sáb: 10h-22h, Dom: 12h-21h",
+    "telefone": "(83) 3456-7807",
+    "conhecidoPor": [
+      "Cinema multiplex",
+      "Praça de alimentação",
+      "Lojas de departamento",
+      "Estacionamento coberto"
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=400",
+    "avaliacoes": [
+      {
+        "autor": "Vitor W.",
+        "nota": 4,
+        "comentario": "Ótimo lugar para passear no final de semana."
+      }
+    ]
+  }
+]

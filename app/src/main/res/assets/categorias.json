@@ -1,0 +1,33 @@
+
+[
+  {
+    "id": "cafes",
+    "nome": "Cafés",
+    "icon": "ic_coffee",
+    "cor": "CAFE"
+  },
+  {
+    "id": "restaurantes",
+    "nome": "Restaurantes",
+    "icon": "ic_restaurant",
+    "cor": "RESTAURANTE"
+  },
+  {
+    "id": "tapiocarias",
+    "nome": "Tapiocarias",
+    "icon": "ic_tapiocaria",
+    "cor": "TAPIOCARIA"
+  },
+  {
+    "id": "centros-esportivos",
+    "nome": "Fitness & Esportes",
+    "icon": "ic_fitness_center",
+    "cor": "FITNESS"
+  },
+  {
+    "id": "shopping-centers",
+    "nome": "Lojas & Shopping",
+    "icon": "ic_shopping_bag",
+    "cor": "SHOPPING"
+  }
+]
