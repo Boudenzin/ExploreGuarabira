@@ -34,13 +34,6 @@ class LocaisListViewModel(
     val uiState: StateFlow<LocaisListUiState> = _uiState.asStateFlow()
 
     init {
-
-        val categoria = repository.getCategoriaPorId(categoriaId)
-
-        _uiState.update {
-            it.copy(categoria = categoria)
-        }
-
         carregarLocais()
     }
 
@@ -50,8 +43,7 @@ class LocaisListViewModel(
                 .onStart {
                     _uiState.update { it.copy(isLoading = true) }
                 }
-                .catch { e ->
-                    Log.e("LocalViewModel", "Erro ao carregar locais", e)
+                .catch {
 
                     _uiState.update { currentState ->
                         currentState.copy(
@@ -61,12 +53,11 @@ class LocaisListViewModel(
                     }
                 }
                 .collect { locais ->
-                    _uiState.update { currentState ->
-                        currentState.copy(
+                    _uiState.update {
+                        it.copy(
                             locais = locais,
                             locaisFiltrados = locais,
-                            isLoading = false,
-                            snackbarMessage = null
+                            isLoading = false
                         )
                     }
                 }
@@ -77,16 +68,19 @@ class LocaisListViewModel(
 
     fun onSearchTextChange(newText: String) {
 
+        val query = newText.trim()
+
         val filtrados = _uiState.value.locais.filter {
-            it.nome.contains(newText, ignoreCase = true) || it.endereco.contains(newText, ignoreCase = true)
+            it.nome.contains(query, true) ||
+                    it.endereco.contains(query, true)
         }
 
-        _uiState.update { currentState ->
-            currentState.copy(
+
+        _uiState.update {
+            it.copy(
                 searchQuery = newText,
                 locaisFiltrados = filtrados
             )
-
         }
     }
 

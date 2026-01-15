@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.exploreguarabiraapp.R
-import com.example.exploreguarabiraapp.data.MasterDetailWeights
+import com.example.exploreguarabiraapp.utils.MasterDetailWeights
 import com.example.exploreguarabiraapp.data.repository.LocalRepositoryInstance
 import com.example.exploreguarabiraapp.ui.theme.LocalSpacing
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModel

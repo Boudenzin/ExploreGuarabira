@@ -1,4 +1,4 @@
-package com.example.exploreguarabiraapp.data
+package com.example.exploreguarabiraapp.utils
 
 data class MasterDetailWeights(
     val master: Float,

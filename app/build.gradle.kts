@@ -52,7 +52,7 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
     implementation("io.coil-kt:coil-compose:2.5.0")
     implementation("androidx.activity:activity-compose:1.9.0")
-
+    implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.compose.material3.window.size.class1)
     testImplementation(libs.junit)

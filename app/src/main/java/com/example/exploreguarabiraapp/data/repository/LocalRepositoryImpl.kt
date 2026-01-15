@@ -1,6 +1,6 @@
 package com.example.exploreguarabiraapp.data.repository
 
-import com.example.exploreguarabiraapp.data.datasource.LocalDataSource
+import com.example.exploreguarabiraapp.data.LocalDataSource
 import com.example.exploreguarabiraapp.data.models.Categoria
 import kotlinx.coroutines.flow.flowOf
 
@@ -20,7 +20,7 @@ class LocalRepositoryImpl(
     override fun getLocalDetalhes(localId: String) =
         flowOf(
             dataSource.getLocais()
-                .find { it.id == localId }
+                .firstOrNull { it.id == localId }
         )
 
     override fun getCategoriaPorId(id: String): Categoria =

@@ -1,4 +1,4 @@
-package com.example.exploreguarabiraapp.data.datasource
+package com.example.exploreguarabiraapp.data
 
 import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.models.Local
