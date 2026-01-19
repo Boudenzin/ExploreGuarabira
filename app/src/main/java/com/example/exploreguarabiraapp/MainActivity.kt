@@ -13,10 +13,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
+        val container = (application as ExploreGuarabiraApplication).container
+
         setContent {
             ExploreGuarabiraAppTheme {
                 ProvideAdaptiveLayout(activity = this) {
-                    AppNavHost()
+                    AppNavHost(appContainer = container)
                 }
             }
         }

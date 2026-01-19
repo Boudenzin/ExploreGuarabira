@@ -13,7 +13,7 @@
     <string name="rating_content_description">Avaliação</string>
     <string name="search_bar_placeholder">Buscar estabelecimentos...</string>
     <string name="no_results_category">Não há locais disponíveis nessa categoria</string>
-    <string name="no_results_for_query">Nenhum local encontrado para a busca: "%1%s"</string>
+    <string name="no_results_for_query">Nenhum local encontrado para a busca: \"%1$s\"</string>
     <string name="local_image_description">Imagem ilustrativa do local %1$s</string>
     <string name="local_rating_text">Nota %1$.1f de 5, com %2$d avaliações</string>
     <string name="local_rating_accessibility">Nota %1$.1f de 5 estrelas, com %2$d avaliações</string>
@@ -23,6 +23,6 @@
     <string name="sheet_state_collapsed">Detalhes recolhidos</string>
     <string name="back_button_description">Voltar</string>
     <string name="empty_state_text">Selecione um local para ver os detalhes</string>
-    <string name="stars_description">Avaliação %1$.1f de 5 estrelas</string>
+    <string name="stars_description">Avaliação %1$d de 5 estrelas</string>
     <string name="local_rating_short">%1$.1f (%2$d avaliações)</string>
 </resources>

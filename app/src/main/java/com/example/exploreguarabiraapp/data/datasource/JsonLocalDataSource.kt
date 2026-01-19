@@ -15,17 +15,17 @@ class JsonLocalDataSource(
 ): LocalDataSource {
 
 
-    private val categorias: List<Categoria> by lazy {
+    private val categoriasCache: List<Categoria> by lazy {
         loadCategorias()
     }
 
-    private val locais: List<Local> by lazy {
-        loadLocais(categorias)
+    private val locaisCache: List<Local> by lazy {
+        loadLocais(categoriasCache)
     }
 
-    override fun getCategorias(): List<Categoria> = categorias
+    override fun getCategorias(): List<Categoria> = categoriasCache
 
-    override fun getLocais(): List<Local> = locais
+    override fun getLocais(): List<Local> = locaisCache
 
     private fun loadCategorias(): List<Categoria> {
         val json = context.assets.open("categorias.json")

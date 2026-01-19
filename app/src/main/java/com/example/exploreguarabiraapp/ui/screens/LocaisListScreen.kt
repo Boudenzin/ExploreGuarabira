@@ -20,31 +20,35 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.example.exploreguarabiraapp.ExploreGuarabiraApplication
 import com.example.exploreguarabiraapp.R
-import com.example.exploreguarabiraapp.utils.MasterDetailWeights
-import com.example.exploreguarabiraapp.data.repository.LocalRepositoryInstance
 import com.example.exploreguarabiraapp.ui.theme.LocalSpacing
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModel
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModelFactory
 import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
+import com.example.exploreguarabiraapp.utils.MasterDetailWeights
 import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
 
 @Composable
 fun LocaisListScreen(
     categoriaId: String,
     navController: NavController,
-    viewModel: LocaisListViewModel = viewModel(
+) {
+
+    val context = LocalContext.current
+    val app = context.applicationContext as ExploreGuarabiraApplication
+
+    val viewModel: LocaisListViewModel = viewModel(
         factory = LocaisListViewModelFactory(
-            repository = LocalRepositoryInstance,
+            repository = app.container.localRepository,
             categoriaId = categoriaId
         )
     )
-
-) {
 
     val adaptiveLayout = LocalAdaptiveLayout.current
     val spacing = LocalSpacing.current
@@ -137,7 +141,10 @@ fun LocaisListScreen(
 
                 uiState.searchQuery.isNotEmpty() && uiState.locaisFiltrados.isEmpty() -> {
                     LocaisEmptyState(
-                        message = stringResource(R.string.no_results_for_query)
+                        message = stringResource(
+                            R.string.no_results_for_query,
+                            uiState.searchQuery
+                        )
                     )
                 }
 
