@@ -42,24 +42,32 @@ android {
 }
 
 dependencies {
-
+    // Injeção de Dependência
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    // Android Core e Ciclo de Vida
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.activity.compose)
+
+    // Compose (Usando o BOM para gerenciar versões automaticamente)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
-    implementation("androidx.compose.material:material-icons-extended")
-    implementation("io.coil-kt:coil-compose:2.5.0")
-    implementation("androidx.activity:activity-compose:1.9.0")
-    implementation("com.google.code.gson:gson:2.10.1")
     implementation(libs.androidx.compose.foundation.layout)
     implementation(libs.androidx.compose.material3.window.size.class1)
+
+    // Gson, Coil, Materialicons e Navigation
+    implementation(libs.compose.material.icons.extended) // depois importar só o necessário, biblioteca grande
+    implementation(libs.coil.compose)
+    implementation(libs.gson)
+    implementation(libs.androidx.navigation.compose)
+
+    // Testes
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,5 +75,4 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation("androidx.navigation:navigation-compose:2.9.6")
 }
