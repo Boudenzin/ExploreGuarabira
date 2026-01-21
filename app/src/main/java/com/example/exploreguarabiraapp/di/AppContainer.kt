@@ -11,5 +11,5 @@ class AppContainer(context: Context) {
     private val jsonDataSource = JsonLocalDataSource(context)
 
     val localRepository: LocalRepository =
-        FakeLocalRepository()
+        LocalRepositoryImpl(jsonDataSource)
 }
