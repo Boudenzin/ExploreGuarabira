@@ -7,18 +7,18 @@ import androidx.activity.enableEdgeToEdge
 import com.example.exploreguarabiraapp.ui.screens.AppNavHost
 import com.example.exploreguarabiraapp.ui.theme.ExploreGuarabiraAppTheme
 import com.example.exploreguarabiraapp.utils.adaptive.ProvideAdaptiveLayout
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        val container = (application as ExploreGuarabiraApplication).container
-
         setContent {
             ExploreGuarabiraAppTheme {
                 ProvideAdaptiveLayout(activity = this) {
-                    AppNavHost(appContainer = container)
+                    AppNavHost()
                 }
             }
         }

@@ -20,35 +20,23 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.exploreguarabiraapp.ExploreGuarabiraApplication
 import com.example.exploreguarabiraapp.R
 import com.example.exploreguarabiraapp.ui.theme.LocalSpacing
 import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModel
-import com.example.exploreguarabiraapp.ui.viewmodel.LocaisListViewModelFactory
 import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
 import com.example.exploreguarabiraapp.utils.MasterDetailWeights
 import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
 
 @Composable
 fun LocaisListScreen(
-    categoriaId: String,
     navController: NavController,
 ) {
 
-    val context = LocalContext.current
-    val app = context.applicationContext as ExploreGuarabiraApplication
-
-    val viewModel: LocaisListViewModel = viewModel(
-        factory = LocaisListViewModelFactory(
-            repository = app.container.localRepository,
-            categoriaId = categoriaId
-        )
-    )
+    val viewModel: LocaisListViewModel = hiltViewModel()
 
     val adaptiveLayout = LocalAdaptiveLayout.current
     val spacing = LocalSpacing.current

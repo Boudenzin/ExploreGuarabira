@@ -1,12 +1,13 @@
 package com.example.exploreguarabiraapp.ui.viewmodel
 
-import android.util.Log
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.exploreguarabiraapp.data.models.Categoria
 import com.example.exploreguarabiraapp.data.models.Local
 import com.example.exploreguarabiraapp.data.repository.LocalRepository
 import com.example.exploreguarabiraapp.ui.state.LocaisListUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -14,11 +15,16 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LocaisListViewModel(
+@HiltViewModel
+class LocaisListViewModel @Inject constructor(
     private val repository: LocalRepository,
-    private val categoriaId: String
+    savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+
+    private val categoriaId: String =
+        checkNotNull(savedStateHandle["categoriaId"])
 
     private val categoria: Categoria =
         repository.getCategoriaPorId(categoriaId)

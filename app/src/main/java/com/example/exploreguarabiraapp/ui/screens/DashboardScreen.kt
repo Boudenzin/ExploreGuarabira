@@ -16,24 +16,24 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.exploreguarabiraapp.data.models.Categoria
-import com.example.exploreguarabiraapp.data.repository.LocalRepository
 import com.example.exploreguarabiraapp.ui.components.DashboardTopBar
 import com.example.exploreguarabiraapp.ui.theme.DashboardGradientBottomDark
 import com.example.exploreguarabiraapp.ui.theme.DashboardGradientBottomLight
 import com.example.exploreguarabiraapp.ui.theme.DashboardGradientTopDark
 import com.example.exploreguarabiraapp.ui.theme.DashboardGradientTopLight
+import com.example.exploreguarabiraapp.ui.viewmodel.DashboardViewModel
 import com.example.exploreguarabiraapp.utils.LocalAdaptiveLayout
 import com.example.exploreguarabiraapp.utils.adaptive.AdaptiveLayout
 
 @Composable
 fun DashboardScreen(
-    repository: LocalRepository,
+    viewModel: DashboardViewModel = hiltViewModel(),
     onCategorySelected: (Categoria) -> Unit
 ) {
 
@@ -46,7 +46,7 @@ fun DashboardScreen(
         AdaptiveLayout.EXPANDED -> 4
     }
 
-    val categoriaState by repository.getTodasCategorias()
+    val categoriaState by viewModel.categorias
         .collectAsState(initial = emptyList())
 
     val isDark = isSystemInDarkTheme()

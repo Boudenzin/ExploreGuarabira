@@ -6,6 +6,7 @@
     <string name="top_dashboard_subtitle">Descubra os melhores lugares da sua cidade</string>
     <string name="search_bar_placeholder">Buscar estabelecimentos...</string>
 
+    <string name="no_results_snackbar">Não foi possível carregar os locais. Verifique sua conexão.</string>
     <string name="no_results_category">Não há locais disponíveis nessa categoria</string>
     <string name="no_results_for_query">Nenhum local encontrado para a busca: \"%1$s\"</string>
     <string name="empty_state_text">Selecione um local para ver os detalhes</string>

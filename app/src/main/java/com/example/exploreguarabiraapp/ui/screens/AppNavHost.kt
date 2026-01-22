@@ -10,12 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.exploreguarabiraapp.di.AppContainer
 
 
 @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
 @Composable
-fun AppNavHost(appContainer: AppContainer) {
+fun AppNavHost() {
 
     val navController = rememberNavController()
 
@@ -30,7 +29,6 @@ fun AppNavHost(appContainer: AppContainer) {
         ) {
             composable(Screen.Dashboard.route) {
                 DashboardScreen(
-                    repository = appContainer.localRepository,
                     onCategorySelected = { categoria ->
                         navController.navigate(
                             Screen.LocalList.createRoute(categoria.id)
@@ -40,11 +38,9 @@ fun AppNavHost(appContainer: AppContainer) {
             }
 
             composable(Screen.LocalList.route) { backStackEntry ->
-                val categoriaId = backStackEntry.arguments
-                    ?.getString("categoriaId") ?: return@composable
+
 
                 LocaisListScreen(
-                    categoriaId = categoriaId,
                     navController = navController
                 )
             }
