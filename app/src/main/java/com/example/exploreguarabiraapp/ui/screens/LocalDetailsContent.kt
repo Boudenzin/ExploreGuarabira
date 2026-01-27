@@ -55,17 +55,26 @@ fun LocalDetailsContent(
         local.nome
     )
 
-    val ratingText = stringResource(
-        R.string.local_rating_text,
-        local.avaliacaoMedia,
-        local.totalAvaliacoes
-    )
+    val temAvaliacao = (local.avaliacaoMedia ?: 0.0) > 0.0 && local.totalAvaliacoes > 0
 
-    val ratingA11yText = stringResource(
-        R.string.local_rating_accessibility,
-        local.avaliacaoMedia,
-        local.totalAvaliacoes
-    )
+    val ratingText = if (temAvaliacao) {
+        stringResource(
+            R.string.local_rating_text,
+            local.avaliacaoMedia!!,
+            local.totalAvaliacoes
+        )
+    } else {
+        stringResource(R.string.local_rating_empty)
+    }
+
+
+    val ratingA11yText = if (temAvaliacao) {
+        stringResource(
+            R.string.local_rating_accessibility,
+            local.avaliacaoMedia!!,
+            local.totalAvaliacoes
+        )
+    } else ratingText
 
 
     Column(
@@ -91,7 +100,8 @@ fun LocalDetailsContent(
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop,
                 placeholder = painterResource(R.drawable.placeholder),
-                error = painterResource(R.drawable.placeholder)
+                error = painterResource(R.drawable.placeholder),
+                fallback = painterResource(R.drawable.placeholder)
             )
         }
 
@@ -135,23 +145,24 @@ fun LocalDetailsContent(
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        Text(
-            text = stringResource(R.string.details_sheet_known),
-            style = MaterialTheme.typography.titleSmall,
-            modifier = Modifier.semantics { heading() }
-        )
-
-        Spacer(modifier = Modifier.height(8.dp))
-
-        FlowRow(
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            local.conhecidoPor.forEach { tag ->
-                AssistChip(
-                    onClick = {},
-                    label = { Text(tag) }
-                )
+        if (local.conhecidoPor.isNotEmpty()) {
+            Spacer(modifier = Modifier.height(12.dp))
+            Text(
+                text = stringResource(R.string.details_sheet_known),
+                style = MaterialTheme.typography.titleSmall,
+                modifier = Modifier.semantics { heading() }
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+            FlowRow(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                local.conhecidoPor.forEach { tag ->
+                    AssistChip(
+                        onClick = {},
+                        label = { Text(tag) }
+                    )
+                }
             }
         }
 
@@ -177,12 +188,14 @@ fun LocalDetailsContent(
             style = DetailRowStyle.EXPANDED
         )
 
-        DetailRow(
-            icon = Icons.Default.Phone,
-            text = local.telefone,
-            label = stringResource(R.string.label_telefone),
-            style = DetailRowStyle.EXPANDED
-        )
+        if (!local.telefone.isNullOrBlank()) {
+            DetailRow(
+                icon = Icons.Default.Phone,
+                text = local.telefone,
+                label = stringResource(R.string.label_telefone),
+                style = DetailRowStyle.EXPANDED
+            )
+        }
 
         Spacer(modifier = Modifier.height(16.dp))
 

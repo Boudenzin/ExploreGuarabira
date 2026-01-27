@@ -129,11 +129,15 @@ fun LocalListItemCard(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = stringResource(
-                            R.string.local_rating_short,
-                            local.avaliacaoMedia,
-                            local.totalAvaliacoes,
-                        ),
+                        text = local.avaliacaoMedia?.let { media ->
+                            if (local.totalAvaliacoes > 0) {
+                                stringResource(
+                                    R.string.local_rating_short,
+                                    media,
+                                    local.totalAvaliacoes
+                                )
+                            } else null
+                        } ?: stringResource(R.string.local_rating_empty),
                         style = bodyStyle
                     )
                 }

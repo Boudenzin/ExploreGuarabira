@@ -6,6 +6,6 @@ fun AvaliacaoDto.toModel(): Avaliacao {
     return Avaliacao(
         nomeUsuario = autor,
         nota = nota,
-        comentario = comentario
+        comentario = comentario ?: ""
     )
 }

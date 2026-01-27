@@ -14,12 +14,18 @@ data class Local(
     val nome: String,
     val descricao: String,
     val categoria: Categoria,
-    val avaliacaoMedia: Double,
-    val totalAvaliacoes: Int,
     val endereco: String,
     val horario: String,
-    val telefone: String,
-    val conhecidoPor: List<String>,
-    val imageUrl: String,
-    val avaliacoes: List<Avaliacao>
-)
+    val telefone: String?,
+    val conhecidoPor: List<String> = emptyList(),
+    val imageUrl: String?,
+    val avaliacoes: List<Avaliacao> = emptyList()
+) {
+    val totalAvaliacoes: Int
+        get() = avaliacoes.size
+
+    val avaliacaoMedia: Double?
+        get() = if (avaliacoes.isNotEmpty()) {
+            avaliacoes.map { it.nota }.average()
+        } else null
+}

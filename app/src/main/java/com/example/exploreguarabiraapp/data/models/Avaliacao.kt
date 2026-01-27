@@ -6,5 +6,5 @@ package com.example.exploreguarabiraapp.data.models
 data class Avaliacao(
     val nomeUsuario: String,
     val nota: Int, // 1 a 5
-    val comentario: String
+    val comentario: String?
 )

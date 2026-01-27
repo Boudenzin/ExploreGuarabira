@@ -10,13 +10,11 @@ fun LocalDto.toModel(categoria: Categoria): Local {
         nome = nome,
         descricao = descricao,
         categoria = categoria,
-        avaliacaoMedia = avaliacaoMedia,
-        totalAvaliacoes = totalAvaliacoes,
         endereco = endereco,
         horario = horario,
         telefone = telefone,
-        conhecidoPor = conhecidoPor,
+        conhecidoPor = conhecidoPor ?: emptyList(),
         imageUrl = imageUrl,
-        avaliacoes = avaliacoes.map { it.toModel() }
+        avaliacoes = avaliacoes?.map { it.toModel() } ?: emptyList()
     )
 }

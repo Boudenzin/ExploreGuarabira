@@ -87,10 +87,13 @@ fun AvaliacaoItem(
                 }
             }
 
-            Text(
-                text = avaliacao.comentario,
-                style = MaterialTheme.typography.bodyMedium
-            )
+            if (!avaliacao.comentario.isNullOrBlank()) {
+                Text(
+                    text = avaliacao.comentario,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
         }
     }
 }
