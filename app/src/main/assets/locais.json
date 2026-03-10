@@ -1,201 +1,395 @@
 [
   {
-    "id": "cafe-1",
-    "nome": "Café Aroma",
-    "descricao": "Cafeteria aconchegante com grãos especiais e ambiente familiar. Perfeito para trabalhar ou encontrar amigos.",
-    "categoriaId": "cafes",
-    "avaliacaoMedia": 4.8,
-    "totalAvaliacoes": 156,
-    "endereco": "Rua das Flores, 123 - Centro",
-    "horario": "Seg-Sex: 7h-19h",
-    "telefone": "(83) 3456-7890",
-    "conhecidoPor": [
-      "Café expresso premiado",
-      "Bolos caseiros",
-      "Wi-Fi gratuito",
-      "Ambiente tranquilo"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400",
-    "avaliacoes": [
-      {
-        "autor": "Pedro Peterson",
-        "nota": 5,
-        "comentario": "Melhor café da cidade! Ambiente ideal para leitura."
-      },
-      {
-        "autor": "Ana Beatriz Rocha",
-        "nota": 4,
-        "comentario": "Sempre volto pelo pão de queijo. Perfeito."
-      },
-      {
-        "autor": "Larissa Pereira",
-        "nota": 5,
-        "comentario": "Grãos premium e atendimento impecável."
-      }
-    ]
-  },
-  {
-    "id": "cafe-2",
-    "nome": "Café do Ponto",
-    "descricao": "Tradicional café da manhã e lanches rápidos. Atende a comunidade há mais de 15 anos.",
-    "categoriaId": "cafes",
-    "avaliacaoMedia": 4.6,
-    "totalAvaliacoes": 89,
-    "endereco": "Av. Principal, 456 - Bairro Novo",
-    "horario": "Seg-Sáb: 6h30-20h",
-    "telefone": "(83) 3456-7891",
-    "conhecidoPor": [
-      "Café da manhã completo",
-      "Pão na chapa",
-      "Atendimento rápido",
-      "Preços acessíveis"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400",
-    "avaliacoes": [
-      {
-        "autor": "Pedro F.",
-        "nota": 4,
-        "comentario": "Café com leite tradicional e saboroso."
-      }
-    ]
-  },
-  {
-    "id": "rest-1",
-    "nome": "Restaurante Sabor da Terra",
-    "descricao": "Comida caseira com tempero especial da vovó. Buffet variado e pratos à la carte.",
-    "categoriaId": "restaurantes",
-    "avaliacaoMedia": 4.7,
-    "totalAvaliacoes": 312,
-    "endereco": "Av. Central, 234 - Centro",
-    "horario": "Seg-Dom: 11h-23h",
-    "telefone": "(83) 3456-7894",
-    "conhecidoPor": [
-      "Feijoada aos sábados",
-      "Buffet self-service",
-      "Sobremesas caseiras",
-      "Ambiente familiar"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400",
-    "avaliacoes": [
-      {
-        "autor": "Ana D.",
-        "nota": 5,
-        "comentario": "Experiência gastronômica incrível. O risoto é divino."
-      },
-      {
-        "autor": "Bruno E.",
-        "nota": 4,
-        "comentario": "Ótimo para um jantar romântico, mas o preço é salgado."
-      }
-    ]
-  },
-  {
-    "id": "rest-2",
-    "nome": "Churrascaria Bom Gosto",
-    "descricao": "Rodízio de carnes nobres com buffet completo. Ambiente climatizado e espaçoso.",
-    "categoriaId": "restaurantes",
-    "avaliacaoMedia": 4.8,
-    "totalAvaliacoes": 445,
-    "endereco": "Rua da Liberdade, 567 - Vila Nova",
-    "horario": "Seg-Dom: 11h-15h, 18h-23h",
-    "telefone": "(83) 3456-7895",
-    "conhecidoPor": [
-      "Picanha de primeira",
-      "Rodízio completo",
-      "Buffet variado",
-      "Churrasco no almoço"
-    ],
-    "imageUrl": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=400",
-    "avaliacoes": [
-      {
-        "autor": "Rafa S.",
-        "nota": 5,
-        "comentario": "Carnes sempre no ponto. Top demais."
-      }
-    ]
-  },
-  {
-    "id": "tap-1",
-    "nome": "Tapioca & Sabor",
-    "descricao": "Tapiocas recheadas e cuscuz nordestino. Café da manhã típico regional.",
-    "categoriaId": "tapiocarias",
-    "avaliacaoMedia": 4.5,
-    "totalAvaliacoes": 143,
-    "endereco": "Rua Nordeste, 123 - Centro",
-    "horario": "Seg-Sáb: 6h-14h",
-    "telefone": "(83) 3456-7899",
-    "conhecidoPor": [
-      "Tapioca de carne seca",
-      "Cuscuz com leite",
-      "Suco natural",
-      "Café regional"
-    ],
-    "imageUrl": "https://www.clube-fitness.com/generated_files/tapiocaria-beiju-tapiocaria1.jpg",
-    "avaliacoes": [
-      {
-        "autor": "Felipe G.",
-        "nota": 5,
-        "comentario": "A tapioca de carne de sol é a melhor que já comi!"
-      },
-      {
-        "autor": "Gabi H.",
-        "nota": 4,
-        "comentario": "Rápido, gostoso e barato. Ponto de parada obrigatório."
-      }
-    ]
-  },
-  {
     "id": "sport-1",
-    "nome": "Academia FitLife",
-    "descricao": "Academia completa com equipamentos modernos e profissionais qualificados.",
+    "nome": "Academia Smart Fit",
+    "descricao": "A maior redes de academia na América Latina agora em Guarabira",
     "categoriaId": "centros-esportivos",
-    "avaliacaoMedia": 4.6,
-    "totalAvaliacoes": 234,
-    "endereco": "Av. dos Esportes, 456 - Jardim Atlético",
-    "horario": "Seg-Sex: 6h-22h, Sáb: 8h-14h",
-    "telefone": "(83) 3456-7803",
+    "avaliacaoMedia": 5,
+    "totalAvaliacoes": 2,
+    "endereco": "R. Otacílio Líra Cabral, 1300 - Centro",
+    "horario": "Seg-Sex: 5h-23h, Sáb: 8h-17h, Dom: 8h-14h",
+    "telefone": "",
     "conhecidoPor": [
-      "Musculação completa",
-      "Aulas coletivas",
-      "Personal trainer",
+      "Professores atenciosos",
+      "Banho quente",
+      "Ar-condicionado",
+      "Sala de relaxamento"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fsmartfit_image.webp?alt=media&token=4360ca6d-f7d1-44ae-9661-438bd020444f",
+    "avaliacoes": [
+      {
+        "autor": "Júnior Costa",
+        "nota": 5,
+        "comentario": "A melhor a academia da cidade, praticidade em matrícula e pagamento, espaço amplo e bem aconchegante com ar condicionado, sala de ginástica, área de cardio com várias esteiras, bicicletas e escadas rolantes, ainda tem sala de ginástica e uma sala de relaxamento com duas cadeiras relaxantes. Ótimo área de exercício em nossa cidade."
+      },
+      {
+        "autor": "Deyse Ferreira",
+        "nota": 5,
+        "comentario": "A melhor da cidade!\nDicas: wifi exclusivo para alunos (o sinal de algumas operadoras não funcionam bem nas dependências da academia), banho quente, música no banheiro..."
+      }
+    ]
+  },
+  {
+    "id": "sport-2",
+    "nome": "DNA Gym",
+    "descricao": "Academia e Centro de Treinamento Especializado.",
+    "categoriaId": "centros-esportivos",
+    "avaliacaoMedia": 4.5,
+    "totalAvaliacoes": 3,
+    "endereco": "l - R. São Manoel, 268 - Bela Vista",
+    "horario": "Seg-Sex: 5h-22h, Sáb: 8h-14h, 15-18h, Dom: 9h-11h",
+    "telefone": "(83) 99182-5189",
+    "conhecidoPor": [
+      "Profissionais completos",
+      "Atleta Rakan",
       "Área cardio"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fdnagym_image.jpg?alt=media&token=8b74c54b-f79d-45f7-a203-59fd18e2ea57",
     "avaliacoes": [
       {
-        "autor": "Higor I.",
+        "autor": "Marylany",
         "nota": 5,
-        "comentario": "Equipamentos novos e professores atenciosos."
+        "comentario": "Amo o trabalho de vcs. Time de excelência, super qualificados e o melhor, entendem o que estão fazendo e tem resultado"
       },
       {
         "autor": "Júlia L.",
         "nota": 4,
-        "comentario": "Aulas de funcional excelentes, recomendo a todos!"
+        "comentario": ""
+      }
+    ]
+  },
+  {
+    "id": "sport-3",
+    "nome": "Academia Equilibrio do Corpo",
+    "descricao": "Academia raiz de Guarabira, com uma vibe mais old school",
+    "categoriaId": "centros-esportivos",
+    "avaliacaoMedia": 3.6,
+    "totalAvaliacoes": 3,
+    "endereco": "Av. Osmar de Aquino - Centro",
+    "horario": "Seg-Sex: 5h-22h, Sáb: 7h-18h",
+    "telefone": "",
+    "conhecidoPor": [
+      "Old School",
+      "Academia Raiz"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fequilibrio_image.jpg?alt=media&token=b84afe9b-ba91-40f6-ac3a-f8dd3ec4beff",
+    "avaliacoes": [
+      {
+        "autor": "Anderson Regis",
+        "nota": 5,
+        "comentario": "Espaço muito bom e máquinas boas. Excelente"
+      },
+      {
+        "autor": "Humberto de Carvalho",
+        "nota": 1,
+        "comentario": "Terrível, muito suja e o atendimento deixa muito a desejar"
+      },
+      {
+        "autor": "Joana Darc",
+        "nota": 5,
+        "comentario": ""
+      }
+    ]
+  },
+  {
+    "id": "sport-4",
+    "nome": "Hidroformas",
+    "descricao": "A mais tradicional da cidade!",
+    "categoriaId": "centros-esportivos",
+    "avaliacaoMedia": 5,
+    "totalAvaliacoes": 2,
+    "endereco": "Av. Sabiniano Maia, 726 - Bairro Novo",
+    "horario": "Seg-Sex: 5h-22h, Sáb: 8h-12h, Dom: 10-12h",
+    "telefone": "(83) 98137-0688",
+    "conhecidoPor": [
+      "Profissionais completos",
+      "Auto-cuidado",
+      "Personal trainer",
+      "Área cardio"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fhidroformas_image.jpg?alt=media&token=38fe0fd5-0dc5-4ab1-a7ea-a4eb43c52d60",
+    "avaliacoes": [
+      {
+        "autor": "Tiago Silva",
+        "nota": 5,
+        "comentario": "Academia organizada, com ambiente bem estruturado e agradável para os alunos.Possui um maquinário completo e moderno e possui uma equipe profissional bastante competente e qualificada."
+      },
+      {
+        "autor": "Alex Alves",
+        "nota": 5,
+        "comentario": "Academia muito top, excelente atendimento excelentes profissionais e excelente espaço!👏"
       }
     ]
   },
   {
     "id": "shop-1",
-    "nome": "Shopping Central Plaza",
-    "descricao": "Shopping tradicional do centro com lojas variadas e praça de alimentação completa.",
+    "nome": "Shopping Cidade Luz",
+    "descricao": "Shopping em crescente expansão na cidade.",
     "categoriaId": "shopping-centers",
-    "avaliacaoMedia": 4.5,
-    "totalAvaliacoes": 1234,
-    "endereco": "Av. Brasil, 1000 - Centro",
-    "horario": "Seg-Sáb: 10h-22h, Dom: 12h-21h",
-    "telefone": "(83) 3456-7807",
+    "avaliacaoMedia": 5,
+    "totalAvaliacoes": 2,
+    "endereco": "R. Otacílio Líra Cabral, 100 - Areia Branca",
+    "horario": "Seg-Sáb: 10h-22h, Dom: 11h-22h",
+    "telefone": "(83) 3434-4091",
     "conhecidoPor": [
       "Cinema multiplex",
       "Praça de alimentação",
-      "Lojas de departamento",
-      "Estacionamento coberto"
+      "Lojas de departamento"
     ],
-    "imageUrl": "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=400",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fcidadeluz_image.png?alt=media&token=3ecf6c4a-4f18-4d83-bd6f-e9696c3aa5db",
     "avaliacoes": [
       {
-        "autor": "Vitor W.",
+        "autor": "José Santiago",
+        "nota": 5,
+        "comentario": "Shopping organizado. Amplo estacionamento. Corredores livres. Variedade de lojas. Espaços para crianças, alimentação, entretenimento e comércio. Banheiros limpos. Entrada Franca. Conheci o shopping logo após sua abertura. Surpreso com o seu desenvolvimento, ampliação e variedade de negócios. Gostei."
+      },
+      {
+        "autor": "Paraíba em Minuto",
+        "nota": 5,
+        "comentario": "Local bastante espaçoso, um cinema top, praça de alimentação com ótimas opções, desde de comidas regiões a comida chinesa, amplo estacionamento e não cobra para estacionar. Senti falta de som nos corredores. Algo que acho que deveria ter no futuro."
+      }
+    ]
+  },
+  {
+    "id": "cafe-1",
+    "nome": "Austrália Cafeteria Bistrô",
+    "descricao": "Desde 2019 proporcionando momentos inesquecíveis",
+    "categoriaId": "cafes",
+    "avaliacaoMedia": 0.0,
+    "totalAvaliacoes": 0,
+    "endereco": "Av. Dom Pedro II, 61 - Centro",
+    "horario": "Seg-Sex: 11h-21h",
+    "telefone": "(83) 98633-6645",
+    "conhecidoPor": [
+      "Café expresso premiado",
+      "Bolos caseiros",
+      "Boas conversas",
+      "Ambiente tranquilo"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Faustralia_image.png?alt=media&token=dfba508a-8e65-480d-894a-b84ae92ffd12",
+    "avaliacoes": []
+  },
+  {
+    "id": "cafe-2",
+    "nome": "Café Com Prosa",
+    "descricao": "O melhor da culinária regional com nossos maravilhosos cafés",
+    "categoriaId": "cafes",
+    "avaliacaoMedia": 5,
+    "totalAvaliacoes": 1,
+    "endereco": "R. Otacílio Líra Cabral, 292-450",
+    "horario": "Seg-Sáb: 6h30-20h",
+    "telefone": "(83) 98853-5132",
+    "conhecidoPor": [
+      "Almoço completo",
+      "Comida saborosa",
+      "Atendimento rápido",
+      "Preços acessíveis"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Faustralia_image.png?alt=media&token=dfba508a-8e65-480d-894a-b84ae92ffd12",
+    "avaliacoes": [
+      {
+        "autor": "Waldson",
+        "nota": 1,
+        "comentario": "Local excelente, comida saborosa e bom atendimento!"
+      }
+    ]
+  },
+  {
+    "id": "rest-1",
+    "nome": "Cida Restaurante",
+    "descricao": "O restaurante mais famoso da cidade.",
+    "categoriaId": "restaurantes",
+    "avaliacaoMedia": 5,
+    "totalAvaliacoes": 2,
+    "endereco": "R. José Pereira, 45-177 - São José",
+    "horario": "Dom-Seg: 11h-14h, Seg,Qua,Sex: 18h-21h",
+    "telefone": "(83) 98840-2755",
+    "conhecidoPor": [
+      "Comida ótima",
+      "Buffet self-service",
+      "Variedade alimentar",
+      "Ambiente familiar"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fcida_image.png?alt=media&token=9b3bae6f-9208-4f0e-9e67-c94e8e07ad56",
+    "avaliacoes": [
+      {
+        "autor": "Wictor C.",
+        "nota": 5,
+        "comentario": "É provavelmente um dos melhores self-services da Paraíba. Tem muita variedade e rotatividade de alimentos, comida bem temperada e sem excesso de sal - algo ideal nos dias de hoje. Muita opção de salada para quem tem estilo de vida vegetariano ou apenas gosta de comer salada. O único ponto fraco na comida são os \"bolinhos fritos\" feitos com o que sobrou do buffet do dia anterior, às vezes dá pra sentir que a comida usada para fazê-los já está um pouco \"passada\", mas apesar disso ainda são muito gostosos. O atendimento é rápido e eficaz, só peca no espaço do restaurante, que fica muito apertado nos dias de maior movimento, como finais de semanas e feriados, podendo ter o cliente que esperar até meia hora na fila.\nPreço por pessoa\nR$ 20–40\nComida: 5\nServiço: 5\nAmbiente: 4"
+      },
+      {
+        "autor": "Daniel de Almeida",
+        "nota": 5,
+        "comentario": "Realmente um restaurante muito bom, Indico a qualquer pessoa que esteja em Guarabira, Não sou da cidade mas sempre que eu venho eu como lá, Foi uma indicação de uma pessoa de lá, Eu estou sempre na cidade uma vez ao mês, Mas sempre que eu falei tu restaurante para alguém da cidade, A expressão todas as pessoas é a mesma, Todos dizem que a comida de lá é boa, Ou seja pode ir que ela se garante.\nServiço\nRefeição no local\nPreço por pessoa\nR$ 20–40\nComida: 5\nServiço: 5\nAmbiente: 4"
+      }
+    ]
+  },
+  {
+    "id": "rest-2",
+    "nome": "Bar da Lama",
+    "descricao": "Venha conhecer o BDL e tenha a melhor experiência gastronômica da sua vida!",
+    "categoriaId": "restaurantes",
+    "avaliacaoMedia": 5,
+    "totalAvaliacoes": 2,
+    "endereco": "Rua: Josué Pimentel - Bela Vista",
+    "horario": "Seg-Qui: 17h30-22h, Sex-Sáb: 17h-23h",
+    "telefone": "(83) 98613-5695",
+    "conhecidoPor": [
+      "Refeição no Local",
+      "Para viagem",
+      "Experiência Gastronômica",
+      "Ambiente familiar"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fbardalama_image.png?alt=media&token=4dec9e53-7a7b-4fca-96ff-b4c427b70d26",
+    "avaliacoes": [
+      {
+        "autor": "Romildo R.",
+        "nota": 5,
+        "comentario": "Uma das melhores comidas que já comi, a macaxeira com a carne de boi é simplesmente divino."
+      },
+      {
+        "autor": "Arthur Emanuel",
+        "nota": 5,
+        "comentario": "Comida excelente, uma das melhores que já comi na vida. Atendimento primoroso. Recomendo a todos, é uma experiência que vale a pena ser vivida.\nPreço por pessoa\nR$ 20–40\nComida: 5\nServiço: 5\nAmbiente: 5\nNível de barulho\nSilencioso, fácil de conversar\nTempo de espera\nSem espera"
+      }
+    ]
+  },
+  {
+    "id": "rest-3",
+    "nome": "Atualle Restaurante",
+    "descricao": "Fome de Verdade, Pede Atualle",
+    "categoriaId": "restaurantes",
+    "endereco": "R. Otacílio Líra Cabral, 100 - Areia Branca",
+    "horario": "Seg-Dom: 10h-22h",
+    "telefone": "(83) 98191-5176",
+    "conhecidoPor": [
+      "Refeição no local",
+      "Buffet self-service",
+      "Retirada na Porta",
+      "Delivery"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fatualle_image.jpg?alt=media&token=e71ec35e-829c-482c-9107-d3ad22413586",
+    "avaliacoes": [
+      {
+        "autor": "Yago Ferreira",
+        "nota": 1,
+        "comentario": "Não sou muito de avaliar lugares e comidas, mas esse lugar é simplesmente horrível, comida caríssima pelas variedades! Vim nesse sábado dia 8/03 as 12:00, faltando praticamente tudo, comida gelada e sem gosto, pedi uma carne chamada coxão mole que estava tão dura quanto uma pedra, estava no ponto que eu gosto, porém com aparência horrível, carne com gosto de velha, era mais fácil ter pego os 130 reais e rasgado!"
+      },
+      {
+        "autor": "Deyse Ferreira",
+        "nota": 5,
+        "comentario": "Adoro a comida, as sobremesas, o café etc\nSe tivesse picado de bode com mais frequência no cardápio ficaria ainda melhor."
+      }
+    ]
+  },
+  {
+    "id": "rest-4",
+    "nome": "Victor Grill",
+    "descricao": "Restaurante bom barato e bonito",
+    "categoriaId": "restaurantes",
+    "endereco": "R. Sólon de Lucena, 246-304 - Centro",
+    "horario": "Seg-Sáb: 10h-14h30",
+    "telefone": "(83) 98666-7172",
+    "conhecidoPor": [
+      "Variedade Alimentar",
+      "Buffet self-service",
+      "Ótimo Atendimento",
+      "Ambiente familiar"
+    ],
+    "imageUrl": "",
+    "avaliacoes": [
+      {
+        "autor": "Valdir A.",
+        "nota": 5,
+        "comentario": "Excelente atendimento, com destaque para o cuidado do pessoal do pessoal em servir bem. Boas opções de acompanhamentos, legumes, verduras; vez por outra alguma fruta é servida."
+      },
+      {
+        "autor": "OLga J.",
+        "nota": 5,
+        "comentario": "Bom lugar para almoçar, comida boa e barata, aceita cartão, ambiente climatizado, bom atendimento."
+      }
+    ]
+  },
+  {
+    "id": "rest-5",
+    "nome": "Churrascaria Paraiguara",
+    "descricao": "Tradição e Qualidade!",
+    "categoriaId": "restaurantes",
+    "endereco": "R. Sólon de Lucena, 246-304 - Centro",
+    "horario": "Seg-Sex: 11h-21h30, Sáb-Dom: 11h-15h",
+    "telefone": "(83) 3271-3505",
+    "conhecidoPor": [
+      "Refeição no Local",
+      "Para Viagem",
+      "Espaço Interno"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fchurrascariaparaiguara.jpg?alt=media&token=1b1ac39c-6b4e-45d7-b4dd-de1df956f40d",
+    "avaliacoes": [
+      {
+        "autor": "João Victor",
+        "nota": 5,
+        "comentario": "Excelente!!! Ótimo atendimento,comida deliciosa,  ambiente climatizado e muito aconchegante. E o preço também é excelente!"
+      },
+      {
+        "autor": "Joseilson Almeida",
         "nota": 4,
-        "comentario": "Ótimo lugar para passear no final de semana."
+        "comentario": "Um bom lugar pra almoçar. Tinha uma boa opção de carnes e o preço é barato. Embora a estrutura não seja tão impecável, quem me atendeu foi muito agradável, além da comida vir no ponto."
+      }
+    ]
+  },
+  {
+    "id": "tap-1",
+    "nome": "Tapiocaria Silva",
+    "descricao": "Desde 2012 fazendo ótimas tapiocas para Guarabira.",
+    "categoriaId": "tapiocarias",
+    "endereco": "Praça Lima E Moura, 75 - Centro",
+    "horario": "Seg-Sex: 6h-20h30, Sáb-Dom: 6h-10h45",
+    "telefone": "(83) 98220-9136",
+    "conhecidoPor": [
+      "Tapioca de carne seca",
+      "Sanduíche natural",
+      "Suco natural",
+      "Café regional"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Ftapiocariasilva_image.jpg?alt=media&token=5c4e1bd7-9599-42f2-a0dd-7ea558c91cc6",
+    "avaliacoes": [
+      {
+        "autor": "Francisco O.",
+        "nota": 5,
+        "comentario": "Lugar agradável, cardápio de lanches variado, gostoso, preços justissimos, e atendimento do staff muito bom!! Super recomendo!!!"
+      },
+      {
+        "autor": "Xavier H.",
+        "nota": 4,
+        "comentario": "O café é ótimo, a tapioca é uma delícia e o atendimento é excelente."
+      }
+    ]
+  },
+  {
+    "id": "tap-2",
+    "nome": "Tapioca da Dara",
+    "descricao": "Tapiocas recheadas e cuscuz nordestino. Café da manhã típico regional.",
+    "categoriaId": "tapiocarias",
+    "endereco": "R. Bianor Ramos do Amaral 206, Nordeste 1",
+    "horario": "Seg-Sáb: 14h-22h",
+    "telefone": "(83) 98826-4614",
+    "conhecidoPor": [
+      "Tapiocas Recheadas",
+      "Cuscuz cremoso",
+      "Suco natural",
+      "Sobremesas"
+    ],
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/exploreguarabira.firebasestorage.app/o/locais%2Fdara_image.jpg?alt=media&token=d752fcab-06a6-4282-bda9-bf8e23baf998",
+    "avaliacoes": [
+      {
+        "autor": "Cleyton",
+        "nota": 5,
+        "comentario": "Eu já falei que amo cuscuz? E que o cuscuz da Dona Dara é o melhor?"
+      },
+      {
+        "autor": "Edilene R.",
+        "nota": 5,
+        "comentario": "Tapioca de frango extremamente recheada e ótimo atendimento!"
       }
     ]
   }

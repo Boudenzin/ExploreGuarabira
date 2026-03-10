@@ -46,7 +46,7 @@ fun LocaisMasterDetail(
         }
 
         else -> {
-            Row(modifier = Modifier.fillMaxSize()) {
+            Row(modifier = Modifier.fillMaxSize()) { //FAZER COM QUE A IMAGEM SEJA MAIOR
 
                 // MASTER
                 Box(

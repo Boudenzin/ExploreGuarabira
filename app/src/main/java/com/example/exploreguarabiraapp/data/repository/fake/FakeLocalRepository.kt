@@ -31,8 +31,6 @@ class FakeLocalRepository : LocalRepository {
             nome = "Café Teste",
             descricao = "Café fictício para testes de UI",
             categoria = categorias[0],
-            avaliacaoMedia = 4.8,
-            totalAvaliacoes = 120,
             endereco = "Rua Teste, 123",
             horario = "Seg-Sex 8h-18h",
             telefone = "0000-0000",
